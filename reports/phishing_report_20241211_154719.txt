@@ -1,0 +1,17 @@
+Analyzing email content for phishing indicators...
+Links found: ['http://192.168.117.128/']
+Checking link: http://192.168.117.128/
+SSL check failed for 192.168.117.128: [WinError 10061] No connection could be made because the target machine actively refused it
+Phishing detected: SSL Certificate invalid or missing for http://192.168.117.128/
+Analysis complete.
+Analyzing email content for phishing indicators...
+Links found: ['http://192.168.117.128/']
+Checking link: http://192.168.117.128/
+SSL check failed for 192.168.117.128: [WinError 10061] No connection could be made because the target machine actively refused it
+Phishing detected: SSL Certificate invalid or missing for http://192.168.117.128/
+Analysis complete.
+
+Phishing detected: Yes
+Reasons for phishing detection:
+- Invalid SSL certificate for: http://192.168.117.128/
+- Invalid SSL certificate for: http://192.168.117.128/
