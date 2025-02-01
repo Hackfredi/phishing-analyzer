@@ -16,10 +16,8 @@ def connect_imap():
         print("🔄 Attempting to connect to IMAP server...")
         mail = imapclient.IMAPClient("imap.gmail.com", ssl=True)
 
-        print("🔄 Logging in to the IMAP server...")
         mail.login(EMAIL, PASSWORD)
 
-        print("🔄 Selecting the INBOX folder...")
         mail.select_folder("INBOX")
 
         print("✅ IMAP Connection Successful! All steps completed.")
