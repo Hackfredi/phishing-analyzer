@@ -18,3 +18,14 @@ def get_latest_email(mail):
     except Exception as e:
         print(f"❌ Error fetching email: {e}")
         return None
+
+def extract_links(email_message):
+    """Extracts links from email body"""
+    links = set()
+    
+    for part in email_message.walk():
+        if part.get_content_type() == "text/plain" or part.get_content_type() == "text/html":
+            body = part.get_payload(decode=True).decode(errors="ignore")
+            links.update(re.findall(r"https?://[^\s]+", body))  # Extract URLs
+    
+    return links
