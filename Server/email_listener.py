@@ -29,3 +29,14 @@ def extract_links(email_message):
             links.update(re.findall(r"https?://[^\s]+", body))  # Extract URLs
     
     return links
+
+def save_email_data(email_message):
+    """Saves email content for analysis"""
+    email_dir = "emails/"
+    os.makedirs(email_dir, exist_ok=True)
+    email_path = os.path.join(email_dir, "latest_email.eml")
+
+    with open(email_path, "w", encoding="utf-8") as f:
+        f.write(str(email_message))
+
+    print(f"📩 Email saved for analysis: {email_path}")
