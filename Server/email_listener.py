@@ -1,7 +1,7 @@
 import email
 import os
 import re
-from Server.imap_setup import connect_imap
+from imap_setup import connect_imap
 
 def get_latest_email(mail):
     """Fetches the latest email in raw format"""
