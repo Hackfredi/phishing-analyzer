@@ -1,6 +1,7 @@
-import time
+import email
 import os
-from Server.imap_setup import connect_imap  # Correct import path
+import re
+from Server.imap_setup import connect_imap
 
 def get_latest_email(mail):
     """Fetches the latest email in raw format"""
@@ -40,3 +41,18 @@ def save_email_data(email_message):
         f.write(str(email_message))
 
     print(f"📩 Email saved for analysis: {email_path}")
+
+if __name__ == "__main__":
+    mail = connect_imap()
+    if not mail:
+        print("❌ IMAP Connection Failed.")
+        exit()
+
+    email_msg = get_latest_email(mail)
+    if email_msg:
+        save_email_data(email_msg)
+        links = extract_links(email_msg)
+
+        print("\n🔗 Extracted Links:")
+        for link in links:
+            print(link)
