@@ -14,7 +14,7 @@ def connect_database():
         conn = sqlite3.connect(DATABASE_FILE)
         cursor = conn.cursor()
 
-        # Create table for email attachments if it doesn't exist
+        """# Create table for email attachments if it doesn't exist
         cursor.execute('''
             CREATE TABLE IF NOT EXISTS email_attachments (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -34,7 +34,7 @@ def connect_database():
                 link TEXT,
                 UNIQUE(x_gm_msgid, link)
             )
-        ''')
+        ''')"""
 
         conn.commit()
         print(" Database connection established and tables created.")
