@@ -1,91 +1,93 @@
 Delivered-To: designerzen09@gmail.com
-Received: by 2002:a05:7010:178e:b0:43a:70c9:4a46 with SMTP id n14csp908963mdm;
-        Wed, 26 Feb 2025 06:35:13 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IEUnv8oWgutVDNCIQPs6cmBVefaZ32fwkm+779K6ndqR226qskYG2jmC+XBhwXF5R31EhX8
-X-Received: by 2002:a05:622a:a19:b0:471:fb5f:4393 with SMTP id d75a77b69052e-472228c8d61mr273490071cf.22.1740580513526;
-        Wed, 26 Feb 2025 06:35:13 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1740580513; cv=none;
+Received: by 2002:a05:7010:7610:b0:43a:70c9:4a46 with SMTP id m16csp1099802mdg;
+        Fri, 28 Feb 2025 09:36:52 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHUgucBFXALq+honfXfPvaXb/6j0vPTb/GWPGMTHWdf7aDsM8ZTfLyQORC0tNY0pDcZJj0X
+X-Received: by 2002:ac8:7dcf:0:b0:472:6aa:d6be with SMTP id d75a77b69052e-474bc069f2fmr46977271cf.17.1740764211775;
+        Fri, 28 Feb 2025 09:36:51 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1740764211; cv=none;
         d=google.com; s=arc-20240605;
-        b=ZgCpNflfn317dKTQo+9ZSeaLL59JSjcrdonl277LORZZJjzOiMFbYJOaEcznS1UaZc
-         JEf/GoP2rCWG5zYJAflqG2xqMQeyDbviJXaxo/w+e2CvJ5EWUIVCqz4deq8hnd8WOL65
-         yDZY14jdBjOThC9/tDk2bB3udLoSnOpL1haS0ZFTFh+ihePvSxWvMbcrcCNP9wgUbTSl
-         cri/kBW8GfsVVQNk8s3aDGnbDnrKQGxMk3dBdIyv2MFGhZTSDZcPMPMmGGgkphldvRM/
-         ozvDaG84ptbHlUgPyeOp5Eesuh11uZVl1iALLRDPEoBgjl2bkFo1n2Vxr5rWgIRt16DL
-         XE+A==
+        b=QBqDlboXYpe/FnzTsLq66oLwfzlyXqVxyQlID/m5rw/v8d5ViSyH/tZJDJkzw4YfpX
+         d9nxDJlOaGGRAQNamkvnPmAaN04WZ8I6OXSHIYxQVtTfjPfo8mK0hWbVW73dXk1YmW2L
+         t7DUf8N95eTG3C6zp8y1rAQFAmgmRJfZoyPm3hPl7ufV0CGhEhmzpv9bprkc6Kq/7URy
+         mRCB4mt0dtRBDqPiBpjjDJ/uoGUC3sHB5K6g2ZhYDp+QRu/5N47nkL7T4lL0qnu2Hl7F
+         34QWJltuTakp/Eg/Oh+AJCjTaWilx2r5UksRmD3spOW2Izssrvz1DUeF8Q3EpyYNixjG
+         nijQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=feedback-id:list-unsubscribe-post:list-unsubscribe:mime-version
          :subject:message-id:to:from:date:dkim-signature:dkim-signature;
-        bh=kw5xICz4GI7h65sEaqG8GKVyRFbRJ8xDUfAjWxA7ItI=;
+        bh=xyvdQAtwUdOv9qw6EGQ3Kvhxg90Iyn+WotXaofSDCJM=;
         fh=PwZGuE2TMpMXKIrGNH3aqBcNk+j3rjzgMubU/WVoSQU=;
-        b=BULWX9F31lTax/d3xo6DKdFDu8ZmM3Q2Xnya/OJOAKMkN417YIui6MWGfbNYsHAdop
-         OgiKVqiRyW14FN6QCdYKmbnKiwvb0nmV/4FXeyIhNeFJe5CvRTKP/bSViwIfT9TXkIFA
-         j2MhfEqrAX7xulmIoPg4LJkrisJKG8mzkSg+9sc2z1Yyc94tG81V2nOJEv3OcJz8eMys
-         pXjMncoY+YUIioRaJQLK+f5oCMjw5GDg43JSPR9GSw9hFziTudzhckzcs39g+S3btniT
-         TKtSD0nLcFpNNJAqfCLd4E0bATOdVacfVJ1q/KqSh3AMtxQW/FnOKPhfxoqmoiliyaTo
-         7SRg==;
+        b=LeQultDCTy0vK0T64I9y9zhzAdtfD5qpBRqZ7mjMtaGJq/8NXHSTFz1jgMVEUV6fj3
+         WMbGfmGxXiYXU+TFoNPhI80xQ26LiBrqyZO1FYRI/aLgppVuGmV1ETzNeruumedo3bSN
+         oe5XHcXWG3a/dHbOhxt8prIHg+WpyyCNlxiyqyL+G6z2iLD/uHm0mJLgE6IGzV5iQ37y
+         WBnpm7kUcaxvYISayBNZRCYnLQ091Ebfn5w73aARC4R/wF+JzWsT17nyaEYrpUU9ou2m
+         P/zxIQdAUCLhZnRj7xin9s3bF3gBNz9o9T+iFSTBly+mjOoHRLFp3InsmH+xrJDWCPuC
+         Qrqg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@mailer.moneycontrol.com header.s=nc2048 header.b=Lw7vVsrK;
-       dkim=pass header.i=@env.etransmail.com header.s=fnc header.b=Stt7M1rn;
-       spf=pass (google.com: domain of 17405082084161891-186721-1-gmail.com@portfolio.moneycontrol.com designates 202.162.253.135 as permitted sender) smtp.mailfrom=17405082084161891-186721-1-gmail.com@portfolio.moneycontrol.com;
+       dkim=pass header.i=@mailer.moneycontrol.com header.s=nc2048 header.b=Fg4P8uaA;
+       dkim=pass header.i=@env.etransmail.com header.s=fnc header.b=NFRBJgDU;
+       spf=pass (google.com: domain of 17406810092939568-186721-1-gmail.com@portfolio.moneycontrol.com designates 103.69.40.138 as permitted sender) smtp.mailfrom=17406810092939568-186721-1-gmail.com@portfolio.moneycontrol.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=moneycontrol.com
-Return-Path: <17405082084161891-186721-1-gmail.com@portfolio.moneycontrol.com>
-Received: from mta-253.135.ncdelivery08.com (mta-253.135.ncdelivery08.com. [202.162.253.135])
-        by mx.google.com with ESMTPS id d75a77b69052e-47378081278si36455291cf.207.2025.02.26.06.35.13
+Return-Path: <17406810092939568-186721-1-gmail.com@portfolio.moneycontrol.com>
+Received: from newmta6-40.138.etransmail.com (newmta6-40.138.etransmail.com. [103.69.40.138])
+        by mx.google.com with ESMTPS id d75a77b69052e-474725445bbsi35084771cf.620.2025.02.28.09.36.51
         for <designerzen09@gmail.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 26 Feb 2025 06:35:13 -0800 (PST)
-Received-SPF: pass (google.com: domain of 17405082084161891-186721-1-gmail.com@portfolio.moneycontrol.com designates 202.162.253.135 as permitted sender) client-ip=202.162.253.135;
+        Fri, 28 Feb 2025 09:36:51 -0800 (PST)
+Received-SPF: pass (google.com: domain of 17406810092939568-186721-1-gmail.com@portfolio.moneycontrol.com designates 103.69.40.138 as permitted sender) client-ip=103.69.40.138;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@mailer.moneycontrol.com header.s=nc2048 header.b=Lw7vVsrK;
-       dkim=pass header.i=@env.etransmail.com header.s=fnc header.b=Stt7M1rn;
-       spf=pass (google.com: domain of 17405082084161891-186721-1-gmail.com@portfolio.moneycontrol.com designates 202.162.253.135 as permitted sender) smtp.mailfrom=17405082084161891-186721-1-gmail.com@portfolio.moneycontrol.com;
+       dkim=pass header.i=@mailer.moneycontrol.com header.s=nc2048 header.b=Fg4P8uaA;
+       dkim=pass header.i=@env.etransmail.com header.s=fnc header.b=NFRBJgDU;
+       spf=pass (google.com: domain of 17406810092939568-186721-1-gmail.com@portfolio.moneycontrol.com designates 103.69.40.138 as permitted sender) smtp.mailfrom=17406810092939568-186721-1-gmail.com@portfolio.moneycontrol.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=moneycontrol.com
-DKIM-Signature: a=rsa-sha256; bh=kw5xICz4GI7h65sEaqG8GKVyRFbRJ8xDUfAjWxA7ItI=;
+DKIM-Signature: a=rsa-sha256; bh=xyvdQAtwUdOv9qw6EGQ3Kvhxg90Iyn+WotXaofSDCJM=;
  c=relaxed/relaxed; d=mailer.moneycontrol.com;
  h=DKIM-Signature:Received:Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:X-CleverTap_META:X-CLEVERTAP_METADATA:List-Unsubscribe:List-Unsubscribe-Post:X-JOB:X-InjTime:Feedback-ID:X-Abuse-Reports-To:X-FNCID:X-Mta-Source:X-Traffic-Type:X-Mailer;
- s=nc2048; t=1740578874; v=1;
- b=Lw7vVsrKH8XDe47Gl6wHIIRMBe+X1jMTF/4CCV0uo2LJwwii6HSbGhgB9laFXqEPvTDV9gGk
- 8CbpFttvvBMavmQfGCL0Rh09xsD6L46gkw9ReIcZOjwohlRcj7D5+FxTND+ZbcID+PlSu4u76bm
- 08bsieD04UWV6o9vKlg5kjAmUIJK75PJmtHqrHamampqFX1vG9hR8s5/yJiZ0kTZ9Z2hKwsryi6
- lnbMV8hNRt/t6VTbfQQ/5jg8arK2YtvPJQ6H7MI63tmmnV22/kG9a/4dmc+lItGRWpOFZYGZZQc
- IlYddIK42Jnv7XHmG3+1k4CYeVQh5Iq9u6aCKJ/eAjusQ==
-DKIM-Signature: a=rsa-sha256; bh=kw5xICz4GI7h65sEaqG8GKVyRFbRJ8xDUfAjWxA7ItI=;
+ s=nc2048; t=1740755750; v=1;
+ b=Fg4P8uaAaDSvvkt6FO0p/x00A2GyskKggumnEoNxUMR0N/bVR30AKxMtnEXUUaUyz7NRlxi2
+ 1AvT/m9eiU3nxvowdCJkBpTWLGryaimyCH2MbLuW81NCbmGDTf9i6yNgC340I+cR520hvSwnQjb
+ qSDig6TycBn9lBmNFsF7wunSWKwv7cl50oK4D1HcDDGc0TKCWhAETBQrjqSW40eP8N5Nu9LuQ4e
+ ++yKbjLm7pfAtDcMbVqBV6Mkeo14+3xC9A6Zfu5UhneZFLrb3ck3/AF/qwz8heqw77tjaOlqpEa
+ LTTbSCichZfSLttG/PXq1G7fhDzglZ/miWay5RF/z5Dqw==
+DKIM-Signature: a=rsa-sha256; bh=xyvdQAtwUdOv9qw6EGQ3Kvhxg90Iyn+WotXaofSDCJM=;
  c=relaxed/relaxed; d=env.etransmail.com;
  h=Received:Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:X-CleverTap_META:X-CLEVERTAP_METADATA:List-Unsubscribe:List-Unsubscribe-Post:X-JOB:X-InjTime:Feedback-ID:X-Abuse-Reports-To:X-FNCID:X-Mta-Source:X-Traffic-Type:X-Mailer;
- s=fnc; t=1740578874; v=1;
- b=Stt7M1rnK9seamHfSAcsq0AlcPs6roRWmYs2fcQq+1tAdQBaazFgeYmlHRifez/a85wRPajR
- lAI9Dh5pFHhabfjf0s02dnNA9tr5vGF2XUgIWCcbYYSa2SzZ11mimca333Uo8mzDZpzKgq8hSwL
- TfsEt4VsPljr+b5c+WDMuScE=
+ s=fnc; t=1740755750; v=1;
+ b=NFRBJgDUYyS6x+XYygjFeyaAL4j9PSAEE1TmP8VLIu6P64YFkwiRTAHfUgS64/0VNUrhFJHB
+ D5xCuSgPFjjBfoJAVCmyeYOLIiI6VSHfHKnThCmwYM9U20ScydkGyHBAfESWOmNC0hw/JGTgcBQ
+ nSHEN7FRWlIUkBAHdC/cGNro=
 Received: from EnterpriseIndiaTesseract21Shard003 (unknown [10.139.248.217])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
 	(Authenticated sender: moneycontrolmailer)
-	by smtppr1.pepipost.com (Postfix) with ESMTPSA id 1563AAB46B
-	for <designerzen09@gmail.com>; Wed, 26 Feb 2025 19:31:10 +0530 (IST)
-Date: Wed, 26 Feb 2025 19:37:53 +0530
+	by smtppr1.pepipost.com (Postfix) with ESMTPSA id 68C61AC883
+	for <designerzen09@gmail.com>; Fri, 28 Feb 2025 20:43:10 +0530 (IST)
+Date: Fri, 28 Feb 2025 20:45:49 +0530
 From: Moneycontrol <alerts@mailer.moneycontrol.com>
 To: designerzen09@gmail.com
-Message-ID: <697310877.1395721.1740578470029@ip-10-12-52-9.ap-south-1.compute.internal>
-Subject: =?UTF-8?Q?A_new_normal_on_growth,_PhonePe_IPO,_and_Bharti_Teleme?=
- =?UTF-8?Q?dia-Tata_Play_merger:_Editor=E2=80=99s_Picks_from_Moneycontrol?=
+Message-ID: <1011810922.340887.1740755590402@ip-10-12-52-9.ap-south-1.compute.internal>
+Subject: =?UTF-8?Q?Growth_rebounds,_Black_Friday_on?=
+ =?UTF-8?Q?_markets,_Axis_Finance_suitors_a?=
+ =?UTF-8?Q?nd_what_Trump=E2=80=99s_gold_card_woes:_?=
+ =?UTF-8?Q?Editor's_Picks_from_Moneycontrol?=
 MIME-Version: 1.0
 Content-Type: multipart/alternative;
-	boundary="----=_Part_1395720_122299755.1740578470028"
-X-CleverTap_META: designerzen09@gmail.com|1632215168|1740577901|20250226|0|wzrk_default|-148510405|
-X-CLEVERTAP_METADATA: {"X-CLEVERTAP_TARGET_ID": 1740577901, "X-CLEVERTAP_IID": {"$numberLong": "148510405"}, "X-CLEVERTAP_IDN": {"$numberLong": "148510405"}, "X-CLEVERTAP_PIVOT": "wzrk_default"}
-List-Unsubscribe: <https://in1.clevertap-prod.com/unsubscribe?hosting_type=system&one_click=true&sub=0&p=LHg7IlYSCxQseHYlIjcwLkB8XloweGhrdWtmcwcBAQBnb3A2e3pwIlZeEw53IXBvOS8%2FKVdCfVs5PXBxd3hjfwoFAARjamdpKnZyaUJZR1sjeGhrdS0oOVlvVVExOycnI3h%2BaxBTZEcOeGhrLHh2JUddU1ElFj0lMHhoaxAAE0kq&e=ZmxheQABBAVhYk16YG5ifgUHCARmRWB7ZW9ieQAGLlAyKTssOT8gMVdeAQ0XPT8qPjZ8KF1dLnwDFx4%3D&encoded=true&wzrk_ex=0>
+	boundary="----=_Part_340886_1479465423.1740755590402"
+X-CleverTap_META: designerzen09@gmail.com|1632215168|1740720039|20250228|0|wzrk_default|-148510405|
+X-CLEVERTAP_METADATA: {"X-CLEVERTAP_TARGET_ID": 1740720039, "X-CLEVERTAP_IID": {"$numberLong": "148510405"}, "X-CLEVERTAP_IDN": {"$numberLong": "148510405"}, "X-CLEVERTAP_PIVOT": "wzrk_default"}
+List-Unsubscribe: <https://in1.clevertap-prod.com/unsubscribe?hosting_type=system&one_click=true&sub=0&p=LHg7IlYSCxQseHYlIjcwLkB8XloweGhrdWtmcwcBAQBnb3A2e3pwIlZeEw53IXBvOS8%2FKVdCfVs5PXBxd3hjfwoFAARjamdpKnZyaUJZR1sjeGhrdS0oOVlvVVExOycnI3h%2BaxBTZEcOeGhrLHh2JUddU1ElFj0lMHhoaxAAE0kq&e=ZmxheQABBAVhYk16YG5ifAAAAQduRWB7ZW9ieQAILlAyKTssOT8gMVdeAQ0XPT8qPjZ8KF1dLnwDFx4%3D&encoded=true&wzrk_ex=0>
 List-Unsubscribe-Post: List-Unsubscribe=One-Click
-X-JOB: moneycontrolmailer:186721:20250226
-X-InjTime: 1740578470
-Feedback-ID: MTg2NzIxOjIwMjUwMjI2XzE5Og==:pepipostE
+X-JOB: moneycontrolmailer:186721:20250228
+X-InjTime: 1740755590
+Feedback-ID: MTg2NzIxOjIwMjUwMjI4XzIwOg==:pepipostE
 X-Abuse-Reports-To: abuse@pepipost.com
-X-FNCID: 186721-17405082084161891-0
+X-FNCID: 186721-17406810092939568-0
 X-Mta-Source: moneycontrolmailer_186721
 X-Traffic-Type: 186721-3
 X-Mailer: NetcoreCloud Mailer
 
-------=_Part_1395720_122299755.1740578470028
+------=_Part_340886_1479465423.1740755590402
 Content-Type: text/html; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
 
@@ -136,19 +138,19 @@ llpadding=3D"0" cellspacing=3D"0" width=3D"100%">     <tbody>      <tr>    =
     <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%">=
         <tbody>         <tr>          <td align=3D"left" style=3D"font-fami=
 ly: 'Lato', Arial;font-size:10px;line-height:20px;color:#333333;padding:0px=
- 10px 3px" valign=3D"middle">February 26, 2025</td>          <td align=3D"r=
+ 10px 3px" valign=3D"middle">February 28, 2025</td>          <td align=3D"r=
 ight" style=3D"font-family: 'Lato', Arial;font-size:10px;line-height:20px;c=
 olor:#333333;padding:0px 10px 3px" valign=3D"middle"><a alt=3D"Moneycontrol=
 " href=3D"http://delivery.portfolio.moneycontrol.com/PNULSRJC?id=3D186721=
-=3DIk5SAA9QD1cDGlBUVAYAAQYGV1UKAgRTAgFTUwwEAwcFB1cDBVILUVcCAwFWVVYFC1RNAV1H=
-DwNYVUNMXFlWDyFVD1BeChYGXQtKVVJXBwICCANVAABXUgcICAdFXxJCEQhNHlMDVAxEA0QdSxN=
+=3DIk5SAA9QD1cDGlMFUAVTBgsHAARaVlFSVVUAVwxUBFMFAVsBD1cKUwAAAFBWV1UCAgBNAV1H=
+DwNYVUNMXFlWDyFVD1BeChYGXQtKVVJXBwEKAQFVAQZfVw8FBw5FXxJCEQhNHlMDVAxEA0QdSxN=
 YRUZWXglRW0gJWV5UT1pYCEITXQ4fVAlVSmIoYyg2MX10DVlVGU4H&fl=3DCUYWQURcF0pbCAdK=
 EgpNRV1TWgBMWQcNWh5fU00YFA=3D=3D&ext=3DZT1LMkprRVI4RmEyWjZDQmw5RFNaamZ3b0ZB=
 QVJqYW1jMUtTUWxOVXhPQUFCdmIyTjdZMnBuTjNKd1FsRWtLVHNrT1FVeEpGMWJXRkVYR2k1Nkt=
 6OGtMbHhFVFhvNExqc3RQamt6UDF0Zlh4UVVOanNvUEQ4Mk4wa1NSazRsTVEwaU0zaG9hUU1IQl=
-FSaWJXVnlaMnNOZVFJQ0JBUmxhR1JwZTNnbE1VQmJia1ElMkJMRDAlMkZkV0J3UEVoQ1dtc3pQe=
+FSZ2FHSjdaR01OZVFJQ0JBUmxhR3BwZTNnbE1VQmJia1ElMkJMRDAlMkZkV0J3UEVoQ1dtc3pQe=
 lFxSWpZbWFVOCUzRCZyPWh0dHBzJTNBJTJGJTJGd3d3Lm1vbmV5Y29udHJvbC5jb20lMkZlZGl0=
-b3JzLXBpY2tzJTJGJmM9NzE3MTQ3NTUyJnRva2VuPUdsRlJBd0ZXRFFBSEN3JTNEJTNEJnRyeT0=
+b3JzLXBpY2tzJTJGJmM9NzE2ODA4Mjg4JnRva2VuPUdsRlJBd0ZXRFFBSEN3JTNEJTNEJnRyeT0=
 xJiRmb2xsb3dfcmVkaXJlY3Q9dHJ1ZQ=3D=3D" style=3D"font-family: 'Lato', Arial;=
 font-size:10px;line-height:20px;color:#333333;text-decoration:none" target=
 =3D"_self" title=3D"Moneycontrol">View in browser</a></td>         </tr>   =
@@ -176,407 +178,506 @@ p">       <div class=3D"reader" style=3D"font-size:16px;line-height:21px"> =
    <td align=3D"left" class=3D"body_content" style=3D"font-family: 'Lato', =
 Arial;font-size:16px;line-height:21px;font-weight:normal;color:#000000;back=
 ground-color:#ffffff;padding:0 20px 20px 20px" valign=3D"top">       <p>The=
- finance ministry has set a more modest goal for India=E2=80=99s economic g=
-rowth, accepting that a <a href=3D"http://delivery.portfolio.moneycontrol.c=
-om/PNULSRJC?id=3D186721=3DIk5SAA9QD1cDGgFSBAZSB1AJAQNaVVNRAQEGAl8CV1RSAVoDA=
-AANAQsCUAIGAVQOUANNAV1HDwNYVUNMXFlWDyFVD1BeChYGXQtKVVJXBwICCANVAABXUgcICAdF=
-XxJCEQhNHlMDVAxEA0QdSxNYRUZWXglRW0gJWV5UT1pYCEITXQ4fVAlVSmIoYyg2MX10DVlVGU4=
-H&fl=3DCUYWQURcF0pbCAdKEgpNRV1TWgBMWQcNWh5fU00YFA=3D=3D&ext=3DZT1LMkprRVI4R=
-mEyWjZDQmw5RFNaamZ3b0ZBQVJqYW1jMUtTUWxOVXhPQUFCdmIyTjdZMnBuTjNKd1FsRWtLVHNr=
-T1FVeEpGMWJXRkVYR2k1Nkt6OGtMbHhFVFhvNExqc3RQamt6UDF0Zlh4UVVOanNvUEQ4Mk4wa1N=
-SazRsTVEwaU0zaG9hUU1IQlFSaWJXVnlaMnNOZVFJQ0JBUmxhR1JwZTNnbE1VQmJia1ElMkJMRD=
-AlMkZkV0J3UEVoQ1dtc3pQelFxSWpZbWFVOCUzRCZyPWh0dHBzJTNBJTJGJTJGd3d3Lm1vbmV5Y=
-29udHJvbC5jb20lMkZuZXdzJTJGYnVzaW5lc3MlMkZmaW5taW4tc2Vlcy1nZHAtZ3Jvd3RoLXJh=
-dGUtb2YtYWJvdXQtNi1hcy1kZWNlbnQtZm9yLXNsb3dlci15ZWFycy0xMjk1MDgwMC5odG1sJTN=
-GdXRtX3NvdXJjZSUzRG5ld3NsZXR0ZXJfZW1haWwlMjZ1dG1fbWVkaXVtJTNEZW1haWwlMjZ1dG=
-1fY2FtcGFpZ24lM0RuZXdzbGV0dGVyXzYrcGVyY2VudCthbm51YWwrZ3Jvd3RoK3JhdGUraXMrJ=
-UUyJTgwJTlDZGVjZW50JUUyJTgwJTlEK2ZvcitzbG93ZXIreWVhcnMmYz03MTcxNDc1NTImdG9r=
-ZW49QmxCVUJRRmFCd01IQ2clM0QlM0QmdHJ5PTEmJGZvbGxvd19yZWRpcmVjdD10cnVl">6 per=
-cent annual growth rate is =E2=80=9Cdecent=E2=80=9D for slower years</a>, r=
-eport Adrija Chatterjee and Meghna Mittal. The more measured expectation co=
-mes after an internal study showed that 8-9 percent growth rates are more e=
-pisodic for most economies. The ministry, however, expects the recent incom=
-e tax cuts to boost consumption, pushing growth rates above 6 percent in th=
-e medium term.</p>       </td>      </tr>      <tr>       <td align=3D"left=
-" class=3D"body_content" style=3D"font-family: 'Lato', Arial;font-size:16px=
-;line-height:21px;font-weight:normal;color:#000000;background-color:#ffffff=
-;padding:0 20px 20px 20px" valign=3D"top">       <p>In the fintech world, <=
-a href=3D"http://delivery.portfolio.moneycontrol.com/PNULSRJC?id=3D186721=
-=3DIk5SAA9QD1cDGlddV1oPBApVBFFbAldUBwQBAV8BV1QAVFVXBV5aVQoHUFZQAQ4HAAVNAV1H=
-DwNYVUNMXFlWDyFVD1BeChYGXQtKVVJXBwICCANVAABXUgcICAdFXxJCEQhNHlMDVAxEA0QdSxN=
-YRUZWXglRW0gJWV5UT1pYCEITXQ4fVAlVSmIoYyg2MX10DVlVGU4H&fl=3DCUYWQURcF0pbCAdK=
-EgpNRV1TWgBMWQcNWh5fU00YFA=3D=3D&ext=3DZT1LMkprRVI4RmEyWjZDQmw5RFNaamZ3b0ZB=
-QVJqYW1jMUtTUWxOVXhPQUFCdmIyTjdZMnBuTjNKd1FsRWtLVHNrT1FVeEpGMWJXRkVYR2k1Nkt=
-6OGtMbHhFVFhvNExqc3RQamt6UDF0Zlh4UVVOanNvUEQ4Mk4wa1NSazRsTVEwaU0zaG9hUU1IQl=
-FSaWJXVnlaMnNOZVFJQ0JBUmxhR1JwZTNnbE1VQmJia1ElMkJMRDAlMkZkV0J3UEVoQ1dtc3pQe=
-lFxSWpZbWFVOCUzRCZyPWh0dHBzJTNBJTJGJTJGd3d3Lm1vbmV5Y29udHJvbC5jb20lMkZuZXdz=
-JTJGYnVzaW5lc3MlMkZpcG8lMkZ3YWxtYXJ0LXByb21vdGVkLXBob25lcGUtcGlja3MtNC1pLWJ=
-hbmtzLXRvLWtpY2stb2ZmLW1lZ2EtaXBvLW5leHQtd2Vlay1leWVpbmctdXAtdG8tMTUtYmlsbG=
-lvbi12YWx1YXRpb24tMTI5NTA0NTcuaHRtbCUzRnV0bV9zb3VyY2UlM0RuZXdzbGV0dGVyX2VtY=
-WlsJTI2dXRtX21lZGl1bSUzRGVtYWlsJTI2dXRtX2NhbXBhaWduJTNEbmV3c2xldHRlcl9QaG9u=
-ZVBlK2lzK3JlYWR5aW5nK2l0c2VsZitmb3IrYW4rSVBPJmM9NzE3MTQ3NTUyJnRva2VuPUJWWlJ=
-CZ1ZXQkFVJTNEJnRyeT0xJiRmb2xsb3dfcmVkaXJlY3Q9dHJ1ZQ=3D=3D">PhonePe is ready=
-ing itself for an IPO</a>, hiring investment banks Kotak Mahindra Capital, =
-JPMorgan, Citi, and Morgan Stanley to advise on a listing that could value =
-the digital payments company at as much as $15 billion, reports Ashwin Moha=
-n. The company, controlled by Walmart, is expected to kick off the IPO proc=
-ess next week, with a listing planned for FY26. This is likely to be one of=
- the biggest tech IPOs in India.</p>       </td>      </tr>      <tr>      =
- <td align=3D"left" class=3D"body_content" style=3D"font-family: 'Lato', Ar=
-ial;font-size:16px;line-height:21px;font-weight:normal;color:#000000;backgr=
-ound-color:#ffffff;padding:0 20px 20px 20px" valign=3D"top">       <p>Meanw=
-hile, the IT industry is facing significant disruption, with nearly <a href=
-=3D"http://delivery.portfolio.moneycontrol.com/PNULSRJC?id=3D186721=3DIk5SA=
-A9QD1cDGlJQUFEFU1RRVFVeAlVSBVRSVA8DBQ5TA1dXBFcBXApUUgZRUANUCghNAV1HDwNYVUNM=
-XFlWDyFVD1BeChYGXQtKVVJXBwICCANVAABXUgcICAdFXxJCEQhNHlMDVAxEA0QdSxNYRUZWXgl=
-RW0gJWV5UT1pYCEITXQ4fVAlVSmIoYyg2MX10DVlVGU4H&fl=3DCUYWQURcF0pbCAdKEgpNRV1T=
-WgBMWQcNWh5fU00YFA=3D=3D&ext=3DZT1LMkprRVI4RmEyWjZDQmw5RFNaamZ3b0ZBQVJqYW1j=
-MUtTUWxOVXhPQUFCdmIyTjdZMnBuTjNKd1FsRWtLVHNrT1FVeEpGMWJXRkVYR2k1Nkt6OGtMbHh=
-FVFhvNExqc3RQamt6UDF0Zlh4UVVOanNvUEQ4Mk4wa1NSazRsTVEwaU0zaG9hUU1IQlFSaWJXVn=
-laMnNOZVFJQ0JBUmxhR1JwZTNnbE1VQmJia1ElMkJMRDAlMkZkV0J3UEVoQ1dtc3pQelFxSWpZb=
-WFVOCUzRCZyPWh0dHBzJTNBJTJGJTJGd3d3Lm1vbmV5Y29udHJvbC5jb20lMkZ0ZWNobm9sb2d5=
-JTJGMjUtb2YtaXQtZGVhbC10ZW51cmVzLWFyZS1iZWluZy1jdXQtc2hvcnQtd2l0aC1haS1zYXl=
-zLW1ja2luc2V5LXMtbm9zaGlyLWtha2EtYXJ0aWNsZS0xMjk1MDYwMy5odG1sJTNGdXRtX3NvdX=
-JjZSUzRG5ld3NsZXR0ZXJfZW1haWwlMjZ1dG1fbWVkaXVtJTNEZW1haWwlMjZ1dG1fY2FtcGFpZ=
-24lM0RuZXdzbGV0dGVyXzI1K3BlcmNlbnQrb2YrZGVhbCt0ZW51cmVzK2JlaW5nK2N1dCtzaG9y=
-dCtiZWNhdXNlK29mK3RoZSthZG9wdGlvbitvZithcnRpZmljaWFsK2ludGVsbGlnZW5jZSZjPTc=
-xNzE0NzU1MiZ0b2tlbj1HbFZWQ0FOVkRRY0hCZ2MlM0QmdHJ5PTEmJGZvbGxvd19yZWRpcmVjdD=
-10cnVl">25 percent of deal tenures being cut short because of the adoption =
-of artificial intelligence</a>, according to Noshir Kaka, senior partner at=
- McKinsey. As AI becomes part of IT deals, Kaka expects deal volumes to ris=
-e eventually, but IT companies must adapt to shorter deal timelines and new=
- revenue streams, reports Debangana Ghosh.</p>       </td>      </tr>      =
-<tr>       <td align=3D"left" class=3D"body_content" style=3D"font-family: =
-'Lato', Arial;font-size:16px;line-height:21px;font-weight:normal;color:#000=
-000;background-color:#ffffff;padding:0 20px 20px 20px" valign=3D"top">     =
-  <p>As the Maha Kumbh comes to a close today, travel demand continues to r=
-emain strong, with <a href=3D"http://delivery.portfolio.moneycontrol.com/PN=
-ULSRJC?id=3D186721=3DIk5SAA9QD1cDGlRXBwVWU1YIAFANBVVcDghQD1pSUwdVUFsJUlJeBl=
-RXDgIGVwcBCwZNAV1HDwNYVUNMXFlWDyFVD1BeChYGXQtKVVJXBwICCANVAABXUgcICAdFXxJCE=
-QhNHlMDVAxEA0QdSxNYRUZWXglRW0gJWV5UT1pYCEITXQ4fVAlVSmIoYyg2MX10DVlVGU4H&fl=
-=3DKUYWQURcF0pFEUFKCAxZUktTXgtMRgkIGFNeWxZDFFcXVw4eQxRZE1cKGwAADlZZVh1DAFVV=
-DwpFHVlfXl9LXw8fFllSS14MXAdaSRULVkRXHV4DFVkHDFcdWkNUVQ4bAEFPUF4UXgRAAxsAChZ=
-VW1dDHARKQA8HWlUcBwsOUwZUAFAfXxJVCQ=3D=3D&ext=3DdXRtX3NvdXJjZT1uZXdzbGV0dGV=
-yX2VtYWlsJnV0bV9tZWRpdW09ZW1haWwmdXRtX2NhbXBhaWduPW5ld3NsZXR0ZXJfYWlyZmFyZX=
-MgZG91YmxpbmcgaW4gdGhlIGZpbmFsIHBoYXNl">airfares doubling in the final phas=
-e</a>, report Maryam Farooqui and Yaruqhullah Khan. Travel traffic numbers =
-show that flights from major cities such as Ahmedabad, Bengaluru, and Mumba=
-i have seen a spike in airfare over the past week. New Delhi, Mumbai, and B=
-engaluru accounted for 70 percent of total bookings to Prayagraj, with dema=
-nd from these cities doubling over the past week.</p>       </td>      </tr=
->      <tr>       <td align=3D"left" class=3D"body_content" style=3D"font-f=
-amily: 'Lato', Arial;font-size:16px;line-height:21px;font-weight:normal;col=
-or:#000000;background-color:#ffffff;padding:0 20px 20px 20px" valign=3D"top=
-">       <p>Turning to behavioural shifts, Ishaan Gera reports that Indians=
-, especially men, are<a href=3D"http://delivery.portfolio.moneycontrol.com/=
-PNULSRJC?id=3D186721=3DIk5SAA9QD1cDGlMGB1FSUgBWBAYNAwJQUgkGDwtWAAVTCgRVAQcK=
-B1dTU1RTBlQGUQlNAV1HDwNYVUNMXFlWDyFVD1BeChYGXQtKVVJXBwICCANVAABXUgcICAdFXxJ=
+ Indian economy showed a promising rebound in the December quarter, accordi=
+ng to new government  numbers released today. The economy <a href=3D"http:/=
+/delivery.portfolio.moneycontrol.com/PNULSRJC?id=3D186721=3DIk5SAA9QD1cDGgd=
+QUVcFDlQDBgcOAF9VBFECAA0BAg9XAAdXUgMJXAsDBgZTBlYFAAFNAV1HDwNYVUNMXFlWDyFVD1=
+BeChYGXQtKVVJXBwEKAQFVAQZfVw8FBw5FXxJCEQhNHlMDVAxEA0QdSxNYRUZWXglRW0gJWV5UT=
+1pYCEITXQ4fVAlVSmIoYyg2MX10DVlVGU4H&fl=3DCUYWQURcF0pbCAdKEgpNRV1TWgBMWQcNWh=
+5fU00YFA=3D=3D&ext=3DZT1LMkprRVI4RmEyWjZDQmw5RFNaamZ3b0ZBQVJqYW1jMUtTUWxOVX=
+hPQUFCdmIyTjdZMnBuTjNKd1FsRWtLVHNrT1FVeEpGMWJXRkVYR2k1Nkt6OGtMbHhFVFhvNExqc=
+3RQamt6UDF0Zlh4UVVOanNvUEQ4Mk4wa1NSazRsTVEwaU0zaG9hUU1IQlFSZ2FHSjdaR01OZVFJ=
+Q0JBUmxhR3BwZTNnbE1VQmJia1ElMkJMRDAlMkZkV0J3UEVoQ1dtc3pQelFxSWpZbWFVOCUzRCZ=
+yPWh0dHBzJTNBJTJGJTJGd3d3Lm1vbmV5Y29udHJvbC5jb20lMkZuZXdzJTJGYnVzaW5lc3MlMk=
+ZlY29ub215JTJGaW5kaWFuLWVjb25vbXktZ3Jldy02LTItaW4tcTMtZnkyNS1ncm93dGgtcGVnZ=
+2VkLWF0LTYtNS0xMjk1Mjk2NS5odG1sJTIzZ29vZ2xlX3ZpZ25ldHRlJTNGdXRtX3NvdXJjZSUz=
+RG5ld3NsZXR0ZXJfZW1haWwlMjZ1dG1fbWVkaXVtJTNEZW1haWwlMjZ1dG1fY2FtcGFpZ24lM0R=
+uZXdzbGV0dGVyX2dyZXcrYXQrNi4yK3BlcmNlbnQmYz03MTY4MDgyODgmdG9rZW49QmwxWEFnUl=
+JBZ01EQkElM0QlM0QmdHJ5PTEmJGZvbGxvd19yZWRpcmVjdD10cnVl">grew at 6.2 percent=
+</a> comapred to the slow pace of 5.6 percent in the preceding three months=
+, reports Ishaan Gera. This quarterly growth rate, however,was still a tad =
+below the 6.3 percent estimated by a wide section of economists polled in a=
+n MC survey. For FY25, the government has now forecast growth at 6.5 percen=
+t. On the brighter side, <a href=3D"http://delivery.portfolio.moneycontrol.=
+com/PNULSRJC?id=3D186721=3DIk5SAA9QD1cDGgQCVwFVDwtRAVVZAgNSUlNQAA0CXwdVCwNT=
+AgUJXVNfBwZSUwVWUAdNAV1HDwNYVUNMXFlWDyFVD1BeChYGXQtKVVJXBwEKAQFVAQZfVw8FBw5=
+FXxJCEQhNHlMDVAxEA0QdSxNYRUZWXglRW0gJWV5UT1pYCEITXQ4fVAlVSmIoYyg2MX10DVlVGU=
+4H&fl=3DCUYWQURcF0pbCAdKEgpNRV1TWgBMWQcNWh5fU00YFA=3D=3D&ext=3DZT1LMkprRVI4=
+RmEyWjZDQmw5RFNaamZ3b0ZBQVJqYW1jMUtTUWxOVXhPQUFCdmIyTjdZMnBuTjNKd1FsRWtLVHN=
+rT1FVeEpGMWJXRkVYR2k1Nkt6OGtMbHhFVFhvNExqc3RQamt6UDF0Zlh4UVVOanNvUEQ4Mk4wa1=
+NSazRsTVEwaU0zaG9hUU1IQlFSZ2FHSjdaR01OZVFJQ0JBUmxhR3BwZTNnbE1VQmJia1ElMkJMR=
+DAlMkZkV0J3UEVoQ1dtc3pQelFxSWpZbWFVOCUzRCZyPWh0dHBzJTNBJTJGJTJGd3d3Lm1vbmV5=
+Y29udHJvbC5jb20lMkZuZXdzJTJGYnVzaW5lc3MlMkZpbmRpYS1zLXByaXZhdGUtY29uc3VtcHR=
+pb24taW1wcm92ZXMtdG8tNi05LWluLXEzLTEyOTUzMjg4Lmh0bWwmYz03MTY4MDgyODgmdG9rZW=
+49QTFWWEF3TlFCQVVNJnRyeT0xJiRmb2xsb3dfcmVkaXJlY3Q9dHJ1ZQ=3D=3D">private con=
+sumption surged to 6.9 percent i</a>n the fiscal third quarter, led by rura=
+l demand and festival spending, with full-year growth expected to hit 7.6 p=
+ercent, reports Adrija Chatterjee. However, investment demand <a href=3D"ht=
+tp://delivery.portfolio.moneycontrol.com/PNULSRJC?id=3D186721=3DIk5SAA9QD1c=
+DGgQBUgcABlYEUwcOBFMGAgcJDw1WBQ5WA1oFDwNcUFNTDgJQAgNVAANNAV1HDwNYVUNMXFlWDy=
+FVD1BeChYGXQtKVVJXBwEKAQFVAQZfVw8FBw5FXxJCEQhNHlMDVAxEA0QdSxNYRUZWXglRW0gJW=
+V5UT1pYCEITXQ4fVAlVSmIoYyg2MX10DVlVGU4H&fl=3DCUYWQURcF0pbCAdKEgpNRV1TWgBMWQ=
+cNWh5fU00YFA=3D=3D&ext=3DZT1LMkprRVI4RmEyWjZDQmw5RFNaamZ3b0ZBQVJqYW1jMUtTUW=
+xOVXhPQUFCdmIyTjdZMnBuTjNKd1FsRWtLVHNrT1FVeEpGMWJXRkVYR2k1Nkt6OGtMbHhFVFhvN=
+Exqc3RQamt6UDF0Zlh4UVVOanNvUEQ4Mk4wa1NSazRsTVEwaU0zaG9hUU1IQlFSZ2FHSjdaR01O=
+ZVFJQ0JBUmxhR3BwZTNnbE1VQmJia1ElMkJMRDAlMkZkV0J3UEVoQ1dtc3pQelFxSWpZbWFVOCU=
+zRCZyPWh0dHBzJTNBJTJGJTJGd3d3Lm1vbmV5Y29udHJvbC5jb20lMkZuZXdzJTJGYnVzaW5lc3=
+MlMkZlY29ub215JTJGaW52ZXN0bWVudC1kZW1hbmQtc2xvd3Mtc2xpZ2h0bHktdG8tNS03LWluL=
+XEzLWZ5MjUtMTI5NTIyNDIuaHRtbCZjPTcxNjgwODI4OCZ0b2tlbj1HbDFSQUFkV0F3a0RCUSUz=
+RCUzRCZ0cnk9MSYkZm9sbG93X3JlZGlyZWN0PXRydWU=3D">slowed slightly to 5.7 perc=
+ent </a>in the quarter, with the share of investment in GDP marginally decl=
+ining to 33.4 percent, reports Meghna Mittal. Interestingly, Chief Economic=
+ Adviser V Anantha Nageswaran predicts the <a href=3D"http://delivery.portf=
+olio.moneycontrol.com/PNULSRJC?id=3D186721=3DIk5SAA9QD1cDGgdTBgEEAQdTVFEKAl=
+ZSBlIBBgBSVA4FVgMBD1RdB1NXDgVdVA4HA1ZNAV1HDwNYVUNMXFlWDyFVD1BeChYGXQtKVVJXB=
+wEKAQFVAQZfVw8FBw5FXxJCEQhNHlMDVAxEA0QdSxNYRUZWXglRW0gJWV5UT1pYCEITXQ4fVAlV=
+SmIoYyg2MX10DVlVGU4H&fl=3DCUYWQURcF0pbCAdKEgpNRV1TWgBMWQcNWh5fU00YFA=3D=3D&=
+ext=3DZT1LMkprRVI4RmEyWjZDQmw5RFNaamZ3b0ZBQVJqYW1jMUtTUWxOVXhPQUFCdmIyTjdZM=
+nBuTjNKd1FsRWtLVHNrT1FVeEpGMWJXRkVYR2k1Nkt6OGtMbHhFVFhvNExqc3RQamt6UDF0Zlh4=
+UVVOanNvUEQ4Mk4wa1NSazRsTVEwaU0zaG9hUU1IQlFSZ2FHSjdaR01OZVFJQ0JBUmxhR3BwZTN=
+nbE1VQmJia1ElMkJMRDAlMkZkV0J3UEVoQ1dtc3pQelFxSWpZbWFVOCUzRCZyPWh0dHBzJTNBJT=
+JGJTJGd3d3Lm1vbmV5Y29udHJvbC5jb20lMkZuZXdzJTJGYnVzaW5lc3MlMkZtYWhha3VtYmgtd=
+G8tcHJvdmlkZS1lY29ub21pYy1ib29zdC1xNC1meTI1LWdkcC1ncm93dGgtb2YtNy02LWFjaGll=
+dmFibGUtY2VhLTEyOTUzNDA4Lmh0bWwmYz03MTY4MDgyODgmdG9rZW49R2xaZUJ3cFJBd2tIQ3c=
+lM0QlM0QmdHJ5PTEmJGZvbGxvd19yZWRpcmVjdD10cnVl">Mahakumbh will give India&#3=
+9;s nominal GDP a boost</a>, pushing it past the $4 trillion mark.</p>     =
+  </td>      </tr>      <tr>       <td align=3D"left" class=3D"body_content=
+" style=3D"font-family: 'Lato', Arial;font-size:16px;line-height:21px;font-=
+weight:normal;color:#000000;background-color:#ffffff;padding:0 20px 20px 20=
+px" valign=3D"top">       <p>There was a bloodbath in the stock markets tod=
+ay with  a the <a href=3D"http://delivery.portfolio.moneycontrol.com/PNULSR=
+JC?id=3D186721=3DIk5SAA9QD1cDGlBSVlFRBVYAUl0MUVMHDwkIAg1UVwcHUwEHB1BeVQJVAF=
+YBBwIHBAZNAV1HDwNYVUNMXFlWDyFVD1BeChYGXQtKVVJXBwEKAQFVAQZfVw8FBw5FXxJCEQhNH=
+lMDVAxEA0QdSxNYRUZWXglRW0gJWV5UT1pYCEITXQ4fVAlVSmIoYyg2MX10DVlVGU4H&fl=3DCU=
+YWQURcF0pbCAdKEgpNRV1TWgBMWQcNWh5fU00YFA=3D=3D&ext=3DZT1LMkprRVI4RmEyWjZDQm=
+w5RFNaamZ3b0ZBQVJqYW1jMUtTUWxOVXhPQUFCdmIyTjdZMnBuTjNKd1FsRWtLVHNrT1FVeEpGM=
+WJXRkVYR2k1Nkt6OGtMbHhFVFhvNExqc3RQamt6UDF0Zlh4UVVOanNvUEQ4Mk4wa1NSazRsTVEw=
+aU0zaG9hUU1IQlFSZ2FHSjdaR01OZVFJQ0JBUmxhR3BwZTNnbE1VQmJia1ElMkJMRDAlMkZkV0J=
+3UEVoQ1dtc3pQelFxSWpZbWFVOCUzRCZyPWh0dHBzJTNBJTJGJTJGd3d3Lm1vbmV5Y29udHJvbC=
+5jb20lMkZuZXdzJTJGYnVzaW5lc3MlMkZtYXJrZXRzJTJGc2Vuc2V4LXBsdW5nZXMtMS00MDAtc=
+HRzLW5pZnR5LWJlbG93LTIyLTE1MC1vbi1mcmVzaC10YXJpZmYtY29uY2VybnMtYnJvYWRlci1t=
+YXJrZXRzLWZhbGwtbmVhcmx5LTMtMTI5NTMwMjUuaHRtbCUzRnV0bV9zb3VyY2UlM0RuZXdzbGV=
+0dGVyX2VtYWlsJTI2dXRtX21lZGl1bSUzRGVtYWlsJTI2dXRtX2NhbXBhaWduJTNEbmV3c2xldH=
+Rlcl9TZW5zZXgrcGx1bmdpbmcrMSUyQzQxNCtwb2ludHMlMkMrb3IrMS45K3BlcmNlbnQmYz03M=
+TY4MDgyODgmdG9rZW49R2xWVkFnRlJBZ2tGQUFrJTNEJnRyeT0xJiRmb2xsb3dfcmVkaXJlY3Q9=
+dHJ1ZQ=3D=3D">Sensex plunging 1,414 points, or 1.9 percent</a>, and the Nif=
+ty ending below 22,150 on fresh tariff concerns, reports Neeshita Beura. Wh=
+ile all sectoral indices bled on Friday, the<a href=3D"http://delivery.port=
+folio.moneycontrol.com/PNULSRJC?id=3D186721=3DIk5SAA9QD1cDGg5VAQFUBwNRCF1eU=
+gJVDwlQDghVXgNSU1UJA1FaVwQEVAVRUwZUAgdNAV1HDwNYVUNMXFlWDyFVD1BeChYGXQtKVVJX=
+BwEKAQFVAQZfVw8FBw5FXxJCEQhNHlMDVAxEA0QdSxNYRUZWXglRW0gJWV5UT1pYCEITXQ4fVAl=
+VSmIoYyg2MX10DVlVGU4H&fl=3DCUYWQURcF0pbCAdKEgpNRV1TWgBMWQcNWh5fU00YFA=3D=3D=
+&ext=3DZT1LMkprRVI4RmEyWjZDQmw5RFNaamZ3b0ZBQVJqYW1jMUtTUWxOVXhPQUFCdmIyTjdZ=
+MnBuTjNKd1FsRWtLVHNrT1FVeEpGMWJXRkVYR2k1Nkt6OGtMbHhFVFhvNExqc3RQamt6UDF0Zlh=
+4UVVOanNvUEQ4Mk4wa1NSazRsTVEwaU0zaG9hUU1IQlFSZ2FHSjdaR01OZVFJQ0JBUmxhR3BwZT=
+NnbE1VQmJia1ElMkJMRDAlMkZkV0J3UEVoQ1dtc3pQelFxSWpZbWFVOCUzRCZyPWh0dHBzJTNBJ=
+TJGJTJGd3d3Lm1vbmV5Y29udHJvbC5jb20lMkZuZXdzJTJGYnVzaW5lc3MlMkZlYXJuaW5ncyUy=
+RmJsYWNrLWZyaWRheS1hbGwtc2VjdG9yYWwtaW5kaWNlcy10cmFkZS1pbi1yZWQtbmlmdHktaXQ=
+tYXV0by1tZWRpYS1tZXRhbC1wbHVuZ2UtdGhlLW1vc3QtMTI5NTMxNDUuaHRtbCZjPTcxNjgwOD=
+I4OCZ0b2tlbj1BMXhYQlFwYUFRWU0mdHJ5PTEmJGZvbGxvd19yZWRpcmVjdD10cnVl"> IT and=
+ auto indices took the steepest cut</a>, plummeting around 4 percent. To kn=
+ow more about the <a href=3D"http://delivery.portfolio.moneycontrol.com/PNU=
+LSRJC?id=3D186721=3DIk5SAA9QD1cDGg4HAFRSAwBUBFwLA1BcVAQHBAFRAgZUBVIGAFZeUwc=
+AAFMGWwYDAwlNAV1HDwNYVUNMXFlWDyFVD1BeChYGXQtKVVJXBwEKAQFVAQZfVw8FBw5FXxJCEQ=
+hNHlMDVAxEA0QdSxNYRUZWXglRW0gJWV5UT1pYCEITXQ4fVAlVSmIoYyg2MX10DVlVGU4H&fl=
+=3DCUYWQURcF0pbCAdKEgpNRV1TWgBMWQcNWh5fU00YFA=3D=3D&ext=3DZT1LMkprRVI4RmEyW=
+jZDQmw5RFNaamZ3b0ZBQVJqYW1jMUtTUWxOVXhPQUFCdmIyTjdZMnBuTjNKd1FsRWtLVHNrT1FV=
+eEpGMWJXRkVYR2k1Nkt6OGtMbHhFVFhvNExqc3RQamt6UDF0Zlh4UVVOanNvUEQ4Mk4wa1NSazR=
+sTVEwaU0zaG9hUU1IQlFSZ2FHSjdaR01OZVFJQ0JBUmxhR3BwZTNnbE1VQmJia1ElMkJMRDAlMk=
+ZkV0J3UEVoQ1dtc3pQelFxSWpZbWFVOCUzRCZyPWh0dHBzJTNBJTJGJTJGd3d3Lm1vbmV5Y29ud=
+HJvbC5jb20lMkZuZXdzJTJGYnVzaW5lc3MlMkZtYXJrZXRzJTJGcnMtNi1sYWtoLWNyLXdpcGVk=
+LW91dC1zZW5zZXgtcGx1bmdlcy0xLTAwMC1wdHMtbmlmdHktYXQtOS1tb250aC1sb3ctdHJhZGU=
+td2FyLWZlYXJzLWFtb25nLWtleS1mYWN0b3JzLWJlaGluZC1tYXJrZXQtY3Jhc2gtMTI5NTI3Nj=
+UuaHRtbCZjPTcxNjgwODI4OCZ0b2tlbj1CRjFXQ1FkU0JnVUcmdHJ5PTEmJGZvbGxvd19yZWRpc=
+mVjdD10cnVl">factors spooking investors</a>, check out J Jagannath&#39;s in=
+-depth analysis. Meanwhile, the <a href=3D"http://delivery.portfolio.moneyc=
+ontrol.com/PNULSRJC?id=3D186721=3DIk5SAA9QD1cDGlRTAVADAQMABwNeAl9WUgUGBApSU=
+wcABFMEVl9aVQdfA1BQBwQOVFZNAV1HDwNYVUNMXFlWDyFVD1BeChYGXQtKVVJXBwEKAQFVAQZf=
+Vw8FBw5FXxJCEQhNHlMDVAxEA0QdSxNYRUZWXglRW0gJWV5UT1pYCEITXQ4fVAlVSmIoYyg2MX1=
+0DVlVGU4H&fl=3DCUYWQURcF0pbCAdKEgpNRV1TWgBMWQcNWh5fU00YFA=3D=3D&ext=3DZT1LM=
+kprRVI4RmEyWjZDQmw5RFNaamZ3b0ZBQVJqYW1jMUtTUWxOVXhPQUFCdmIyTjdZMnBuTjNKd1Fs=
+RWtLVHNrT1FVeEpGMWJXRkVYR2k1Nkt6OGtMbHhFVFhvNExqc3RQamt6UDF0Zlh4UVVOanNvUEQ=
+4Mk4wa1NSazRsTVEwaU0zaG9hUU1IQlFSZ2FHSjdaR01OZVFJQ0JBUmxhR3BwZTNnbE1VQmJia1=
+ElMkJMRDAlMkZkV0J3UEVoQ1dtc3pQelFxSWpZbWFVOCUzRCZyPWh0dHBzJTNBJTJGJTJGd3d3L=
+m1vbmV5Y29udHJvbC5jb20lMkZiYW5raW5nJTJGcmJpLWNvbmR1Y3RzLWZvcmV4LXN3YXAtd29y=
+dGgtdXNkLTEwLWJpbGxpb24tdG8taW5qZWN0LWxpcXVpZGl0eS1hcnRpY2xlLTEyOTUzMjkyLmh=
+0bWwmYz03MTY4MDgyODgmdG9rZW49QkZ4U0FRVlVCZ0lNJnRyeT0xJiRmb2xsb3dfcmVkaXJlY3=
+Q9dHJ1ZQ=3D=3D">Reserve Bank of India injected $10 billion</a> into the fin=
+ancial system through a forex swap auction to address the liquidity deficit=
+ in the financial system.</p>       </td>      </tr>      <tr>       <td al=
+ign=3D"left" class=3D"body_content" style=3D"font-family: 'Lato', Arial;fon=
+t-size:16px;line-height:21px;font-weight:normal;color:#000000;background-co=
+lor:#ffffff;padding:0 20px 20px 20px" valign=3D"top">       <p>An important=
+ change of guard will take place on the regulatory front, with <a href=3D"h=
+ttp://delivery.portfolio.moneycontrol.com/PNULSRJC?id=3D186721=3DIk5SAA9QD1=
+cDGgBRVVYOBAEEAlYLUARXVFYAAAoEAgRSA1UEAFUBUFMHBABVVVYHBARNAV1HDwNYVUNMXFlWD=
+yFVD1BeChYGXQtKVVJXBwEKAQFVAQZfVw8FBw5FXxJCEQhNHlMDVAxEA0QdSxNYRUZWXglRW0gJ=
+WV5UT1pYCEITXQ4fVAlVSmIoYyg2MX10DVlVGU4H&fl=3DCUYWQURcF0pbCAdKEgpNRV1TWgBMW=
+QcNWh5fU00YFA=3D=3D&ext=3DZT1LMkprRVI4RmEyWjZDQmw5RFNaamZ3b0ZBQVJqYW1jMUtTU=
+WxOVXhPQUFCdmIyTjdZMnBuTjNKd1FsRWtLVHNrT1FVeEpGMWJXRkVYR2k1Nkt6OGtMbHhFVFhv=
+NExqc3RQamt6UDF0Zlh4UVVOanNvUEQ4Mk4wa1NSazRsTVEwaU0zaG9hUU1IQlFSZ2FHSjdaR01=
+OZVFJQ0JBUmxhR3BwZTNnbE1VQmJia1ElMkJMRDAlMkZkV0J3UEVoQ1dtc3pQelFxSWpZbWFVOC=
+UzRCZyPWh0dHBzJTNBJTJGJTJGd3d3Lm1vbmV5Y29udHJvbC5jb20lMkZuZXdzJTJGYnVzaW5lc=
+3MlMkZtYXJrZXRzJTJGd2hhdC1jb3VsZC1iZS1vbi10aGUtdG8tZG8tbGlzdC1vZi1pbmNvbWlu=
+Zy1zZWJpLWNoYWlybWFuLXR1aGluLWthbnRhLXBhbmRleS0xMjk1MzE4Mi5odG1sJTNGdXRtX3N=
+vdXJjZSUzRG5ld3NsZXR0ZXJfZW1haWwlMjZ1dG1fbWVkaXVtJTNEZW1haWwlMjZ1dG1fY2FtcG=
+FpZ24lM0RuZXdzbGV0dGVyX1R1aGluK0thbnRhK1BhbmRleSZjPTcxNjgwODI4OCZ0b2tlbj1Eb=
+FpUQ0FSYkFBRU4mdHJ5PTEmJGZvbGxvd19yZWRpcmVjdD10cnVl">Tuhin Kanta Pandey </a=
+>set to take over as SEBI chairman. A seasoned bureaucrat, <a href=3D"http:=
+//delivery.portfolio.moneycontrol.com/PNULSRJC?id=3D186721=3DIk5SAA9QD1cDGg=
+4BXFYGAgNTCFRcAwcFVQZXBVxUAgVSBwZXU18LBgtTUAdUWlYEBFNNAV1HDwNYVUNMXFlWDyFVD=
+1BeChYGXQtKVVJXBwEKAQFVAQZfVw8FBw5FXxJCEQhNHlMDVAxEA0QdSxNYRUZWXglRW0gJWV5U=
+T1pYCEITXQ4fVAlVSmIoYyg2MX10DVlVGU4H&fl=3DCUYWQURcF0pbCAdKEgpNRV1TWgBMWQcNW=
+h5fU00YFA=3D=3D&ext=3DZT1LMkprRVI4RmEyWjZDQmw5RFNaamZ3b0ZBQVJqYW1jMUtTUWxOV=
+XhPQUFCdmIyTjdZMnBuTjNKd1FsRWtLVHNrT1FVeEpGMWJXRkVYR2k1Nkt6OGtMbHhFVFhvNExq=
+c3RQamt6UDF0Zlh4UVVOanNvUEQ4Mk4wa1NSazRsTVEwaU0zaG9hUU1IQlFSZ2FHSjdaR01OZVF=
+JQ0JBUmxhR3BwZTNnbE1VQmJia1ElMkJMRDAlMkZkV0J3UEVoQ1dtc3pQelFxSWpZbWFVOCUzRC=
+ZyPWh0dHBzJTNBJTJGJTJGd3d3Lm1vbmV5Y29udHJvbC5jb20lMkZuZXdzJTJGZWNvbm9teS0yJ=
+TJGbWVldC10aGUtbmV3LXNlYmktY2hpZWYtd2hvLXdhcy1pbnN0cnVtZW50YWwtaW4tYWlyLWlu=
+ZGlhLXNhbGUtbGljLWlwby0xMjk1MzM2OS5odG1sJmM9NzE2ODA4Mjg4JnRva2VuPUdsVlJDQXR=
+UQVFNQ0N3JTNEJTNEJnRyeT0xJiRmb2xsb3dfcmVkaXJlY3Q9dHJ1ZQ=3D=3D">Pandey was t=
+he architect</a> of the Air India privatisation and Life Insurance Corp.&#3=
+9;s mega stake sale, writes Meghna Mittal. Also read Asha Menon=E2=80=99s p=
+iece on <a href=3D"http://delivery.portfolio.moneycontrol.com/PNULSRJC?id=
+=3D186721=3DIk5SAA9QD1cDGgVcVQcDAwNWCVYKAFIHAQMEUAoEXgVZAAYDUgQNUlZWDgZVUgJ=
+TBlRNAV1HDwNYVUNMXFlWDyFVD1BeChYGXQtKVVJXBwEKAQFVAQZfVw8FBw5FXxJCEQhNHlMDVA=
+xEA0QdSxNYRUZWXglRW0gJWV5UT1pYCEITXQ4fVAlVSmIoYyg2MX10DVlVGU4H&fl=3DCUYWQUR=
+cF0pbCAdKEgpNRV1TWgBMWQcNWh5fU00YFA=3D=3D&ext=3DZT1LMkprRVI4RmEyWjZDQmw5RFN=
+aamZ3b0ZBQVJqYW1jMUtTUWxOVXhPQUFCdmIyTjdZMnBuTjNKd1FsRWtLVHNrT1FVeEpGMWJXRk=
+VYR2k1Nkt6OGtMbHhFVFhvNExqc3RQamt6UDF0Zlh4UVVOanNvUEQ4Mk4wa1NSazRsTVEwaU0za=
+G9hUU1IQlFSZ2FHSjdaR01OZVFJQ0JBUmxhR3BwZTNnbE1VQmJia1ElMkJMRDAlMkZkV0J3UEVo=
+Q1dtc3pQelFxSWpZbWFVOCUzRCZyPWh0dHBzJTNBJTJGJTJGd3d3Lm1vbmV5Y29udHJvbC5jb20=
+lMkZuZXdzJTJGYnVzaW5lc3MlMkYzLXllYXJzLWF0LXNlYmktbWFkaGFiaS1idWNoLXMtbGVnYW=
+N5LW9mLXRyaXVtcGhzLXR1cm1vaWwtMTI5NTMwMzIuaHRtbCZjPTcxNjgwODI4OCZ0b2tlbj1Hb=
+FZWQ0FWV0RRY0FDZ1UlM0QmdHJ5PTEmJGZvbGxvd19yZWRpcmVjdD10cnVl">Madhabi Puri B=
+uch&#39;s three-year tenure </a>as SEBI chairperson and mixed that it turne=
+d out to be.</p>       </td>      </tr>      <tr>       <td align=3D"left" =
+class=3D"body_content" style=3D"font-family: 'Lato', Arial;font-size:16px;l=
+ine-height:21px;font-weight:normal;color:#000000;background-color:#ffffff;p=
+adding:0 20px 20px 20px" valign=3D"top">       <p>In the  banking sector, p=
+rivate equity giants <a href=3D"http://delivery.portfolio.moneycontrol.com/=
+PNULSRJC?id=3D186721=3DIk5SAA9QD1cDGlNdAVYFVAAGAwRaVlNXU1YGAVwOUgdRCgBQAlJe=
+UVFfVwZRW1NWUABNAV1HDwNYVUNMXFlWDyFVD1BeChYGXQtKVVJXBwEKAQFVAQZfVw8FBw5FXxJ=
 CEQhNHlMDVAxEA0QdSxNYRUZWXglRW0gJWV5UT1pYCEITXQ4fVAlVSmIoYyg2MX10DVlVGU4H&f=
 l=3DCUYWQURcF0pbCAdKEgpNRV1TWgBMWQcNWh5fU00YFA=3D=3D&ext=3DZT1LMkprRVI4RmEy=
 WjZDQmw5RFNaamZ3b0ZBQVJqYW1jMUtTUWxOVXhPQUFCdmIyTjdZMnBuTjNKd1FsRWtLVHNrT1F=
 VeEpGMWJXRkVYR2k1Nkt6OGtMbHhFVFhvNExqc3RQamt6UDF0Zlh4UVVOanNvUEQ4Mk4wa1NSaz=
-RsTVEwaU0zaG9hUU1IQlFSaWJXVnlaMnNOZVFJQ0JBUmxhR1JwZTNnbE1VQmJia1ElMkJMRDAlM=
+RsTVEwaU0zaG9hUU1IQlFSZ2FHSjdaR01OZVFJQ0JBUmxhR3BwZTNnbE1VQmJia1ElMkJMRDAlM=
 kZkV0J3UEVoQ1dtc3pQelFxSWpZbWFVOCUzRCZyPWh0dHBzJTNBJTJGJTJGd3d3Lm1vbmV5Y29u=
-dHJvbC5jb20lMkZuZXdzJTJGaW5kaWElMkZpbmRpYW4tbWVuLWFyZS1zcGVuZGluZy1sZXNzLXR=
-pbWUtc29jaWFsaXNpbmctbW9yZS1vbi1sZWlzdXJlLWFuZC1tYXNzLW1lZGlhLTEyOTUwOTAyLm=
-h0bWwlM0Z1dG1fc291cmNlJTNEbmV3c2xldHRlcl9lbWFpbCUyNnV0bV9tZWRpdW0lM0RlbWFpb=
-CUyNnV0bV9jYW1wYWlnbiUzRG5ld3NsZXR0ZXJfK2JlY29taW5nK2xlc3Mrc29jaWFibGUlMkMr=
-c3BlbmRpbmcrbGVzcyt0aW1lK3dpdGgrb3RoZXJzK2FuZCttb3JlK2dsdWVkK3RvK3RoZWlyK3N=
-jcmVlbnMmYz03MTcxNDc1NTImdG9rZW49R2xaWEF3cGJBd1lIQlElM0QlM0QmdHJ5PTEmJGZvbG=
-xvd19yZWRpcmVjdD10cnVl"> becoming less sociable, spending less time with ot=
-hers and more glued to their screens</a>. According to an analysis of Time =
-Use Survey results released by the government on February 25, the number of=
- men participating in community events and religious practices fell to 89.8=
- percent in 2024 from 91.4 percent five years ago. Time spent on leisure, m=
-ass media, and culture has increased.</p>       </td>      </tr>      <tr> =
-      <td align=3D"left" class=3D"body_content" style=3D"font-family: 'Lato=
-', Arial;font-size:16px;line-height:21px;font-weight:normal;color:#000000;b=
-ackground-color:#ffffff;padding:0 20px 20px 20px" valign=3D"top">       <p>=
-In a sign of consolidation in the DTH market, <a href=3D"http://delivery.po=
-rtfolio.moneycontrol.com/PNULSRJC?id=3D186721=3DIk5SAA9QD1cDGlJXXVNWVApRUlN=
-aA1NXA1JSBVxUUQ4CU1MFBFEOBwtVUlVRU1RTV1VNAV1HDwNYVUNMXFlWDyFVD1BeChYGXQtKVV=
-JXBwICCANVAABXUgcICAdFXxJCEQhNHlMDVAxEA0QdSxNYRUZWXglRW0gJWV5UT1pYCEITXQ4fV=
-AlVSmIoYyg2MX10DVlVGU4H&fl=3DCUYWQURcF0pbCAdKEgpNRV1TWgBMWQcNWh5fU00YFA=3D=
-=3D&ext=3DZT1LMkprRVI4RmEyWjZDQmw5RFNaamZ3b0ZBQVJqYW1jMUtTUWxOVXhPQUFCdmIyT=
-jdZMnBuTjNKd1FsRWtLVHNrT1FVeEpGMWJXRkVYR2k1Nkt6OGtMbHhFVFhvNExqc3RQamt6UDF0=
-Zlh4UVVOanNvUEQ4Mk4wa1NSazRsTVEwaU0zaG9hUU1IQlFSaWJXVnlaMnNOZVFJQ0JBUmxhR1J=
-wZTNnbE1VQmJia1ElMkJMRDAlMkZkV0J3UEVoQ1dtc3pQelFxSWpZbWFVOCUzRCZyPWh0dHBzJT=
-NBJTJGJTJGd3d3Lm1vbmV5Y29udHJvbC5jb20lMkZuZXdzJTJGYnVzaW5lc3MlMkZhaXJ0ZWwtY=
-29uZmlybXMtdGFsa3Mtd2l0aC10YXRhLWdyb3VwLW9uLW1lcmdlci1vZi1kdGgtYnVzaW5lc3Mt=
-MTI5NTA5MjkuaHRtbCUzRnV0bV9zb3VyY2UlM0RuZXdzbGV0dGVyX2VtYWlsJTI2dXRtX21lZGl=
-1bSUzRGVtYWlsJTI2dXRtX2NhbXBhaWduJTNEbmV3c2xldHRlcl9CaGFydGkrQWlydGVsK2hhcy=
-tjb25maXJtZWQrdGFsa3Mrd2l0aCt0aGUrVGF0YStncm91cCZjPTcxNzE0NzU1MiZ0b2tlbj1Hb=
-FZTQWd0YUFnUUJBZ0UlM0QmdHJ5PTEmJGZvbGxvd19yZWRpcmVjdD10cnVl">Bharti Airtel =
-has confirmed talks with the Tata group</a> to merge Tata Play=E2=80=99s DT=
-H business with its Bharti Telemedia Ltd unit, reports our bureau. Consolid=
-ation is also a clear trend in the cement sector, with <a href=3D"http://de=
-livery.portfolio.moneycontrol.com/PNULSRJC?id=3D186721=3DIk5SAA9QD1cDGgFSBl=
-YAA1RRUlxaVwNQUAlUVQ9TVgNZA1EGUVAKUVdQBVZVWlUAVlFNAV1HDwNYVUNMXFlWDyFVD1BeC=
-hYGXQtKVVJXBwICCANVAABXUgcICAdFXxJCEQhNHlMDVAxEA0QdSxNYRUZWXglRW0gJWV5UT1pY=
-CEITXQ4fVAlVSmIoYyg2MX10DVlVGU4H&fl=3DCUYWQURcF0pbCAdKEgpNRV1TWgBMWQcNWh5fU=
-00YFA=3D=3D&ext=3DZT1LMkprRVI4RmEyWjZDQmw5RFNaamZ3b0ZBQVJqYW1jMUtTUWxOVXhPQ=
-UFCdmIyTjdZMnBuTjNKd1FsRWtLVHNrT1FVeEpGMWJXRkVYR2k1Nkt6OGtMbHhFVFhvNExqc3RQ=
-amt6UDF0Zlh4UVVOanNvUEQ4Mk4wa1NSazRsTVEwaU0zaG9hUU1IQlFSaWJXVnlaMnNOZVFJQ0J=
-BUmxhR1JwZTNnbE1VQmJia1ElMkJMRDAlMkZkV0J3UEVoQ1dtc3pQelFxSWpZbWFVOCUzRCZyPW=
-h0dHBzJTNBJTJGJTJGd3d3Lm1vbmV5Y29udHJvbC5jb20lMkZuZXdzJTJGYnVzaW5lc3MlMkZzb=
-WFsbC1hbmQtbWlkLXNpemVkLWNlbWVudC1wbGF5ZXJzLXN0cnVnZ2xlLWFzLW1hcmtldC1sZWFk=
-ZXJzLXRpZ2h0ZW4tdGhlaXItZ3JpcC0xMjk1MDY5NC5odG1sJmM9NzE3MTQ3NTUyJnRva2VuPUd=
-sVldCUUZVQWdrTkJRRSUzRCZ0cnk9MSYkZm9sbG93X3JlZGlyZWN0PXRydWU=3D">smaller an=
-d mid-sized players struggling to keep up with industry leaders</a> like Ul=
-traTech and Ambuja Cement, reports Aishwarya Nair.</p>       </td>      </t=
-r>      <tr>       <td align=3D"left" class=3D"body_content" style=3D"font-=
-family: 'Lato', Arial;font-size:16px;line-height:21px;font-weight:normal;co=
-lor:#000000;background-color:#ffffff;padding:0 20px 20px 20px" valign=3D"to=
-p">       <p>As our cities become increasingly =E2=80=9Csmart=E2=80=9D or c=
-onnected, they are also growing more vulnerable. A recent analysis by CERT-=
-In has <a href=3D"http://delivery.portfolio.moneycontrol.com/PNULSRJC?id=3D=
-186721=3DIk5SAA9QD1cDGgZSB1cDB1NTA1VeAVNXAQBTBVsDXwFRBVUHAFBaXAFTAAJUU1RUUQ=
-RNAV1HDwNYVUNMXFlWDyFVD1BeChYGXQtKVVJXBwICCANVAABXUgcICAdFXxJCEQhNHlMDVAxEA=
-0QdSxNYRUZWXglRW0gJWV5UT1pYCEITXQ4fVAlVSmIoYyg2MX10DVlVGU4H&fl=3DCUYWQURcF0=
-pbCAdKEgpNRV1TWgBMWQcNWh5fU00YFA=3D=3D&ext=3DZT1LMkprRVI4RmEyWjZDQmw5RFNaam=
-Z3b0ZBQVJqYW1jMUtTUWxOVXhPQUFCdmIyTjdZMnBuTjNKd1FsRWtLVHNrT1FVeEpGMWJXRkVYR=
-2k1Nkt6OGtMbHhFVFhvNExqc3RQamt6UDF0Zlh4UVVOanNvUEQ4Mk4wa1NSazRsTVEwaU0zaG9h=
-UU1IQlFSaWJXVnlaMnNOZVFJQ0JBUmxhR1JwZTNnbE1VQmJia1ElMkJMRDAlMkZkV0J3UEVoQ1d=
-tc3pQelFxSWpZbWFVOCUzRCZyPWh0dHBzJTNBJTJGJTJGd3d3Lm1vbmV5Y29udHJvbC5jb20lMk=
-Z0ZWNobm9sb2d5JTJGY2VydC1pbi1hbmFseXNpcy1mbGFncy1jeWJlci1zZWN1cml0eS1yaXNrL=
-WluLXNtYXJ0LWNpdGllcy1hcnRpY2xlLTEyOTUwNTM0Lmh0bWwlM0Z1dG1fc291cmNlJTNEbmV3=
-c2xldHRlcl9lbWFpbCUyNnV0bV9tZWRpdW0lM0RlbWFpbCUyNnV0bV9jYW1wYWlnbiUzRG5ld3N=
-sZXR0ZXJfZXhwb3NlZCtzaWduaWZpY2FudCtjeWJlcnNlY3VyaXR5K3Jpc2tzK2luKzIwK3NtYX=
-J0K2NpdGllcythY3Jvc3MrSW5kaWEmYz03MTcxNDc1NTImdG9rZW49QmwxZUFBcFdBQUlIQlElM=
-0QlM0QmdHJ5PTEmJGZvbGxvd19yZWRpcmVjdD10cnVl">exposed significant cybersecur=
-ity risks in 20 smart cities across India</a>, leaving them susceptible to =
-malware infections, botnet attacks, and data breaches, reports Aihik Sur. S=
-mart cities in western, central, and northern India are particularly vulner=
-able.</p>       </td>      </tr>      <tr>       <td align=3D"left" class=
-=3D"body_content" style=3D"font-family: 'Lato', Arial;font-size:16px;line-h=
-eight:21px;font-weight:normal;color:#000000;background-color:#ffffff;paddin=
-g:0 20px 20px 20px" valign=3D"top">       <p>And finally, Trump=E2=80=99s p=
-urge of top US military leaders has raised concerns about the erosion of th=
-e politicisation of the military in America. By sacking senior officers who=
- don=E2=80=99t conform to his ideological framework, <a href=3D"http://deli=
-very.portfolio.moneycontrol.com/PNULSRJC?id=3D186721=3DIk5SAA9QD1cDGgNcAFcF=
-VgEGU1YIUQVSUAAAUl0BAw9XAAACBAJZAAUCDlcAAgBRUQFNAV1HDwNYVUNMXFlWDyFVD1BeChY=
-GXQtKVVJXBwICCANVAABXUgcICAdFXxJCEQhNHlMDVAxEA0QdSxNYRUZWXglRW0gJWV5UT1pYCE=
-ITXQ4fVAlVSmIoYyg2MX10DVlVGU4H&fl=3DKUYWQURcF0pFEUFKCAxZUktTXgtMRgkIGFNeWxZ=
-ZA0ESHQ1BXghRClxJXwpIAhpTV11eBkpVBR0bURxbUFsPQgBAGxxEEV0EQBUbCAoaVltGSRwRVx=
-kSDFMdX1dNXglYTFMMVRoAVARVS1gLEU5bUlNUVBdLGVdWDwUBAw4GSF4VXw4=3D&ext=3DdXRt=
-X3NvdXJjZT1uZXdzbGV0dGVyX2VtYWlsJnV0bV9tZWRpdW09ZW1haWwmdXRtX2NhbXBhaWduPW5=
-ld3NsZXR0ZXJfVHJ1bXAgaXMgdW5kZXJtaW5pbmcgdGhlIHByaW5jaXBsZSBvZiBtaWxpdGFyeS=
-Bsb3lhbHR5IHRvIHRoZSBuYXRpb24gYW5kIGZsYWc=3D">Trump is undermining the prin=
-ciple of military loyalty to the nation and flag</a>, not individual leader=
-s, writes defence analyst C Uday Bhaskar. He argues that this approach is m=
-ore in line with authoritarian regimes such as China, where the military sw=
-ears allegiance to the ruling party.</p>       </td>      </tr>      <tr>  =
-     <td align=3D"left" class=3D"best" valign=3D"top"> </td>      </tr>    =
-  <tr>       <td align=3D"left" class=3D"feedback" style=3D"padding:5px 20p=
-x;background-color:#ffffff" valign=3D"top">       <div style=3D"font-family=
-:'Lato', Arial;font-size:15px;line-height:21px;font-weight:400;color:#000;m=
-argin:0;padding:0">       <p>Regards,<br />       Nalin Mehta<br />       M=
-anaging Editor<br />       <a href=3D"http://delivery.portfolio.moneycontro=
-l.com/PNULSRJC?id=3D186721=3DIk5SAA9QD1cDGgNRBgZRDgMJV1JaUVdcBAYCUA1WB1UDAA=
-YEBQNeXVcCAgdUVgYDAwNNAV1HDwNYVUNMXFlWDyFVD1BeChYGXQtKVVJXBwICCANVAABXUgcIC=
-AdFXxJCEQhNHlMDVAxEA0QdSxNYRUZWXglRW0gJWV5UT1pYCEITXQ4fVAlVSmIoYyg2MX10DVlV=
-GU4H&fl=3DCUYWQURcF0pbCAdKEgpNRV1TWgBMWQcNWh5fU00YFA=3D=3D&ext=3DZT1LMkprRV=
-I4RmEyWjZDQmw5RFNaamZ3b0ZBQVJqYW1jMUtTUWxOVXhPQUFCdmIyTjdZMnBuTjNKd1FsRWtLV=
-HNrT1FVeEpGMWJXRkVYR2k1Nkt6OGtMbHhFVFhvNExqc3RQamt6UDF0Zlh4UVVOanNvUEQ4Mk4w=
-a1NSazRsTVEwaU0zaG9hUU1IQlFSaWJXVnlaMnNOZVFJQ0JBUmxhR1JwZTNnbE1VQmJia1ElMkJ=
-MRDAlMkZkV0J3UEVoQ1dtc3pQelFxSWpZbWFVOCUzRCZyPWh0dHBzJTNBJTJGJTJGd3d3Lm1vbm=
-V5Y29udHJvbC5jb20lMkYmYz03MTcxNDc1NTImdG9rZW49QUZ4U0JRWlREQWdBJnRyeT0xJiRmb=
-2xsb3dfcmVkaXJlY3Q9dHJ1ZQ=3D=3D" rel=3D"noopener" target=3D"_blank" title=
-=3D"Moneycontrol"><strong>Moneycontrol</strong></a><br />       <br />     =
-  <em><a href=3D"http://delivery.portfolio.moneycontrol.com/PNULSRJC?id=3D1=
-86721=3DIk5SAA9QD1cDGlJQUVUGVVQCCFBbDVdQVQVSBg0EVw5SUFBQB1MJBwRRUAZcVgNTAVV=
-NAV1HDwNYVUNMXFlWDyFVD1BeChYGXQtKVVJXBwICCANVAABXUgcICAdFXxJCEQhNHlMDVAxEA0=
-QdSxNYRUZWXglRW0gJWV5UT1pYCEITXQ4fVAlVSmIoYyg2MX10DVlVGU4H&fl=3DCUYWQURcF0p=
-bCAdKEgpNRV1TWgBMWQcNWh5fU00YFA=3D=3D&ext=3DZT1LMkprRVI4RmEyWjZDQmw5RFNaamZ=
-3b0ZBQVJqYW1jMUtTUWxOVXhPQUFCdmIyTjdZMnBuTjNKd1FsRWtLVHNrT1FVeEpGMWJXRkVYR2=
-k1Nkt6OGtMbHhFVFhvNExqc3RQamt6UDF0Zlh4UVVOanNvUEQ4Mk4wa1NSazRsTVEwaU0zaG9hU=
-U1IQlFSaWJXVnlaMnNOZVFJQ0JBUmxhR1JwZTNnbE1VQmJia1ElMkJMRDAlMkZkV0J3UEVoQ1dt=
-c3pQelFxSWpZbWFVOCUzRCZyPWh0dHBzJTNBJTJGJTJGd3d3Lm1vbmV5Y29udHJvbC5jb20lMkZ=
-lZGl0b3JzLXBpY2tzLXNpZ24tdXAlMkYmYz03MTcxNDc1NTImdG9rZW49QmwxUUJRVmJCd2tNQk=
-ElM0QlM0QmdHJ5PTEmJGZvbGxvd19yZWRpcmVjdD10cnVl"><strong>If you&#39;d like E=
-ditor&#39;s Picks delivered straight to your inbox, subscribe now!</strong>=
-</a></em><br />       <br />       <em><a href=3D"http://delivery.portfolio=
-.moneycontrol.com/PNULSRJC?id=3D186721=3DIk5SAA9QD1cDGg9WB1dSDgcAAQMIVwUBBw=
-UBUg4OUwZXUQBTVlcKXVdXD1cBUlQFB1RNAV1HDwNYVUNMXFlWDyFVD1BeChYGXQtKVVJXBwICC=
-ANVAABXUgcICAdFXxJCEQhNHlMDVAxEA0QdSxNYRUZWXglRW0gJWV5UT1pYCEITXQ4fVAlVSmIo=
+dHJvbC5jb20lMkZiYW5raW5nJTJGY2FybHlsZS1hZHZlbnQtYW1vbmctcGUtaW52ZXN0b3JzLWl=
+udGVyZXN0ZWQtaW4tYXhpcy1iYW5rLXMtbmJmYy1zdWJzaWRpYXJ5LWFydGljbGUtMTI5NTMzNj=
+YuaHRtbCUzRnV0bV9zb3VyY2UlM0RuZXdzbGV0dGVyX2VtYWlsJTI2dXRtX21lZGl1bSUzRGVtY=
+WlsJTI2dXRtX2NhbXBhaWduJTNEbmV3c2xldHRlcl9DYXJseWxlK2FuZCtBZHZlbnQrSW50ZXJu=
+YXRpb25hbCthcmUrYW1vbmcrc3VpdG9ycyZjPTcxNjgwODI4OCZ0b2tlbj1CbEJTQWdOVkJnZ0E=
+mdHJ5PTEmJGZvbGxvd19yZWRpcmVjdD10cnVl">Carlyle and Advent International are=
+ among suitors</a> for Axis Bank&#39;s NBFC unit, Axis Finance, as the lend=
+er seeks to sell a controlling stake, reports Hamsini Karthik. The deal, va=
+lued at $1.2-1.4 billion, is set to attract several other financial investo=
+rs. Talks are still in the initial stages, with a deal expected to take 6-9=
+ months.</p>       </td>      </tr>      <tr>       <td align=3D"left" clas=
+s=3D"body_content" style=3D"font-family: 'Lato', Arial;font-size:16px;line-=
+height:21px;font-weight:normal;color:#000000;background-color:#ffffff;paddi=
+ng:0 20px 20px 20px" valign=3D"top">       <p>Indian drugmakers are finding=
+ themselves in the crosshairs as the Trump administration considers slappin=
+g a <a href=3D"http://delivery.portfolio.moneycontrol.com/PNULSRJC?id=3D186=
+721=3DIk5SAA9QD1cDGgFVXAJWAlcHAAZdA1dVUFICUgEBXlJWUVdXA1UIVVRUBgUBUAQGC1FNA=
+V1HDwNYVUNMXFlWDyFVD1BeChYGXQtKVVJXBwEKAQFVAQZfVw8FBw5FXxJCEQhNHlMDVAxEA0Qd=
+SxNYRUZWXglRW0gJWV5UT1pYCEITXQ4fVAlVSmIoYyg2MX10DVlVGU4H&fl=3DCUYWQURcF0pbC=
+AdKEgpNRV1TWgBMWQcNWh5fU00YFA=3D=3D&ext=3DZT1LMkprRVI4RmEyWjZDQmw5RFNaamZ3b=
+0ZBQVJqYW1jMUtTUWxOVXhPQUFCdmIyTjdZMnBuTjNKd1FsRWtLVHNrT1FVeEpGMWJXRkVYR2k1=
+Nkt6OGtMbHhFVFhvNExqc3RQamt6UDF0Zlh4UVVOanNvUEQ4Mk4wa1NSazRsTVEwaU0zaG9hUU1=
+IQlFSZ2FHSjdaR01OZVFJQ0JBUmxhR3BwZTNnbE1VQmJia1ElMkJMRDAlMkZkV0J3UEVoQ1dtc3=
+pQelFxSWpZbWFVOCUzRCZyPWh0dHBzJTNBJTJGJTJGd3d3Lm1vbmV5Y29udHJvbC5jb20lMkZuZ=
+XdzJTJGYnVzaW5lc3MlMkZjb21wYW5pZXMlMkZwaGFybWEtaW5kdXN0cnktYm9keS1zZWVrcy1n=
+b3Z0LXRvLWNvbnNpZGVyLXRhcmlmZi1jdXQtb24tdXMtcGhhcm1hLWltcG9ydHMtdG8temVyby0=
+xMjk1MjcxMy5odG1sJTNGdXRtX3NvdXJjZSUzRG5ld3NsZXR0ZXJfZW1haWwlMjZ1dG1fbWVkaX=
+VtJTNEZW1haWwlMjZ1dG1fY2FtcGFpZ24lM0RuZXdzbGV0dGVyXzI1K3BlcmNlbnQrdGFyaWZmJ=
+mM9NzE2ODA4Mjg4JnRva2VuPUJsRmZBQVphREFBRkFBJTNEJTNEJnRyeT0xJiRmb2xsb3dfcmVk=
+aXJlY3Q9dHJ1ZQ=3D=3D">25 percent tariff</a> on generic drugs from India. In=
+dustry body Indian Pharmaceutical Alliance (IPA) has asked the government t=
+o consider abolishing tariffs on US pharma imports, reports Vishwanath Pill=
+a.</p>       </td>      </tr>      <tr>       <td align=3D"left" class=3D"b=
+ody_content" style=3D"font-family: 'Lato', Arial;font-size:16px;line-height=
+:21px;font-weight:normal;color:#000000;background-color:#ffffff;padding:0 2=
+0px 20px 20px" valign=3D"top">       <p>In good news for  millions of salar=
+ied Indians, the EPFO central board has recommended retaining the<a href=3D=
+"http://delivery.portfolio.moneycontrol.com/PNULSRJC?id=3D186721=3DIk5SAA9Q=
+D1cDGgdSXVdTBgAEBlVeUl4CVVNUBVwEVQJZVFEFB1UNUVdVAAVSUwYFC1RNAV1HDwNYVUNMXFl=
+WDyFVD1BeChYGXQtKVVJXBwEKAQFVAQZfVw8FBw5FXxJCEQhNHlMDVAxEA0QdSxNYRUZWXglRW0=
+gJWV5UT1pYCEITXQ4fVAlVSmIoYyg2MX10DVlVGU4H&fl=3DCUYWQURcF0pbCAdKEgpNRV1TWgB=
+MWQcNWh5fU00YFA=3D=3D&ext=3DZT1LMkprRVI4RmEyWjZDQmw5RFNaamZ3b0ZBQVJqYW1jMUt=
+TUWxOVXhPQUFCdmIyTjdZMnBuTjNKd1FsRWtLVHNrT1FVeEpGMWJXRkVYR2k1Nkt6OGtMbHhFVF=
+hvNExqc3RQamt6UDF0Zlh4UVVOanNvUEQ4Mk4wa1NSazRsTVEwaU0zaG9hUU1IQlFSZ2FHSjdaR=
+01OZVFJQ0JBUmxhR3BwZTNnbE1VQmJia1ElMkJMRDAlMkZkV0J3UEVoQ1dtc3pQelFxSWpZbWFV=
+OCUzRCZyPWh0dHBzJTNBJTJGJTJGd3d3Lm1vbmV5Y29udHJvbC5jb20lMkZuZXdzJTJGYnVzaW5=
+lc3MlMkZwZXJzb25hbC1maW5hbmNlJTJGZXBmby1yZXRhaW5zLTgtMjUtaW50ZXJlc3QtcmF0ZS=
+1vbi1lbXBsb3llZXMtcHJvdmlkZW50LWZ1bmQtZGVwb3NpdHMtZm9yLTIwMjQtMjUtY25iYy1hd=
+2Fhei0xMjk1Mjk3My5odG1sJTNGdXRtX3NvdXJjZSUzRG5ld3NsZXR0ZXJfZW1haWwlMjZ1dG1f=
+bWVkaXVtJTNEZW1haWwlMjZ1dG1fY2FtcGFpZ24lM0RuZXdzbGV0dGVyXys4LjI1K3BlcmNlbnQ=
+raW50ZXJlc3QrcmF0ZSZjPTcxNjgwODI4OCZ0b2tlbj1CbEpTQXdGVURBa0RCdyUzRCUzRCZ0cn=
+k9MSYkZm9sbG93X3JlZGlyZWN0PXRydWU=3D"> 8.25 percent interest rate</a> for F=
+Y25, reports Moneycontrol. The decision is subject to the finance ministry=
+=E2=80=99s approval. The EPFO board also decided to boost insurance benefit=
+s under the Employees&#39; Deposit Linked Insurance scheme.</p>       </td>=
+      </tr>      <tr>       <td align=3D"left" class=3D"body_content" style=
+=3D"font-family: 'Lato', Arial;font-size:16px;line-height:21px;font-weight:=
+normal;color:#000000;background-color:#ffffff;padding:0 20px 20px 20px" val=
+ign=3D"top">       <p>As India&#39;s insurance regulator pushes large insur=
+ers to go public, some are dragging their feet, reports Malvika Sundaresan.=
+ Insurance companies have requested the regulator to grant more time before=
+ considering an IPO. They are <a href=3D"http://delivery.portfolio.moneycon=
+trol.com/PNULSRJC?id=3D186721=3DIk5SAA9QD1cDGgAGXFsBBAcHB1BaDQAGAgkJDwpRUwB=
+TBFUBUwMKVVFXU1VXAFUHUwNNAV1HDwNYVUNMXFlWDyFVD1BeChYGXQtKVVJXBwEKAQFVAQZfVw=
+8FBw5FXxJCEQhNHlMDVAxEA0QdSxNYRUZWXglRW0gJWV5UT1pYCEITXQ4fVAlVSmIoYyg2MX10D=
+VlVGU4H&fl=3DCUYWQURcF0pbCAdKEgpNRV1TWgBMWQcNWh5fU00YFA=3D=3D&ext=3DZT1LMkp=
+rRVI4RmEyWjZDQmw5RFNaamZ3b0ZBQVJqYW1jMUtTUWxOVXhPQUFCdmIyTjdZMnBuTjNKd1FsRW=
+tLVHNrT1FVeEpGMWJXRkVYR2k1Nkt6OGtMbHhFVFhvNExqc3RQamt6UDF0Zlh4UVVOanNvUEQ4M=
+k4wa1NSazRsTVEwaU0zaG9hUU1IQlFSZ2FHSjdaR01OZVFJQ0JBUmxhR3BwZTNnbE1VQmJia1El=
+MkJMRDAlMkZkV0J3UEVoQ1dtc3pQelFxSWpZbWFVOCUzRCZyPWh0dHBzJTNBJTJGJTJGd3d3Lm1=
+vbmV5Y29udHJvbC5jb20lMkZiYW5raW5nJTJGaW5zdXJlcnMtcmVsdWN0YW50LXRvLWxhdW5jaC=
+1pcG9zLWFtaWQtcmJjLWltcGxlbWVudGF0aW9uLWFuZC1zdGFrZS1kaWx1dGlvbi1jb25jZXJuc=
+y1hcnRpY2xlLTEyOTUzMjg2Lmh0bWwlM0Z1dG1fc291cmNlJTNEbmV3c2xldHRlcl9lbWFpbCUy=
+NnV0bV9tZWRpdW0lM0RlbWFpbCUyNnV0bV9jYW1wYWlnbiUzRG5ld3NsZXR0ZXJfaGVzaXRhbnQ=
+rdG8rZGlsdXRlK3RoZWlyK3N0YWtlcyZjPTcxNjgwODI4OCZ0b2tlbj1HbE5XQ0FwUUFnVUZDZy=
+UzRCUzRCZ0cnk9MSYkZm9sbG93X3JlZGlyZWN0PXRydWU=3D">hesitant to dilute their =
+stakes</a> and are seeking clarity on the new risk-based capital framework =
+before considering a listing.</p>       </td>      </tr>      <tr>       <t=
+d align=3D"left" class=3D"body_content" style=3D"font-family: 'Lato', Arial=
+;font-size:16px;line-height:21px;font-weight:normal;color:#000000;backgroun=
+d-color:#ffffff;padding:0 20px 20px 20px" valign=3D"top">       <p>And fina=
+lly, Donald Trump&#39;s new &#39;gold card&#39; plan has wealthy <a href=3D=
+"http://delivery.portfolio.moneycontrol.com/PNULSRJC?id=3D186721=3DIk5SAA9Q=
+D1cDGgEBVFoBBgtUUl0IUlIBUFEAAQBWAA4DBFIBBABZVVZUDgVWUgICUwlNAV1HDwNYVUNMXFl=
+WDyFVD1BeChYGXQtKVVJXBwEKAQFVAQZfVw8FBw5FXxJCEQhNHlMDVAxEA0QdSxNYRUZWXglRW0=
+gJWV5UT1pYCEITXQ4fVAlVSmIoYyg2MX10DVlVGU4H&fl=3DCUYWQURcF0pbCAdKEgpNRV1TWgB=
+MWQcNWh5fU00YFA=3D=3D&ext=3DZT1LMkprRVI4RmEyWjZDQmw5RFNaamZ3b0ZBQVJqYW1jMUt=
+TUWxOVXhPQUFCdmIyTjdZMnBuTjNKd1FsRWtLVHNrT1FVeEpGMWJXRkVYR2k1Nkt6OGtMbHhFVF=
+hvNExqc3RQamt6UDF0Zlh4UVVOanNvUEQ4Mk4wa1NSazRsTVEwaU0zaG9hUU1IQlFSZ2FHSjdaR=
+01OZVFJQ0JBUmxhR3BwZTNnbE1VQmJia1ElMkJMRDAlMkZkV0J3UEVoQ1dtc3pQelFxSWpZbWFV=
+OCUzRCZyPWh0dHBzJTNBJTJGJTJGd3d3Lm1vbmV5Y29udHJvbC5jb20lMkZuZXdzJTJGYnVzaW5=
+lc3MlMkZobmlzLXJ1c2gtdG8tY29uc3VsdGFudHMtb3Zlci1kb25hbGQtdHJ1bXAtcy1wbGFuLX=
+RvLXJlcGxhY2UtZWItNS12aXNhLXdpdGgtZ29sZC1jYXJkLTEyOTUyODQ4Lmh0bWwlM0Z1dG1fc=
+291cmNlJTNEbmV3c2xldHRlcl9lbWFpbCUyNnV0bV9tZWRpdW0lM0RlbWFpbCUyNnV0bV9jYW1w=
+YWlnbiUzRG5ld3NsZXR0ZXJfSW5kaWFucytydXNoaW5nK3RvK2ltbWlncmF0aW9uK2NvbnN1bHR=
+hbnRzJmM9NzE2ODA4Mjg4JnRva2VuPUJsWlNBZ05WQkFJQUFRJTNEJTNEJnRyeT0xJiRmb2xsb3=
+dfcmVkaXJlY3Q9dHJ1ZQ=3D=3D">Indians rushing to immigration consultants</a> =
+for advice. The gold card would replace the EB-5 visa, which grants permane=
+nt residency for a $1.05 million investment, with a new visa requiring near=
+ly five times that amount, reports Pavan Burugula. This move has left many =
+wealthy people worried that their existing EB-5 visas may be revoked, and c=
+ompanies are also seeking clarity on the impact of the new rules. The uncer=
+tainty has led to a flurry of queries to consulting firms, with many advisi=
+ng clients to just wait and watch.</p>       </td>      </tr>      <tr>    =
+   <td align=3D"left" class=3D"best" valign=3D"top"> </td>      </tr>      =
+<tr>       <td align=3D"left" class=3D"feedback" style=3D"padding:5px 20px;=
+background-color:#ffffff" valign=3D"top">       <div style=3D"font-family:'=
+Lato', Arial;font-size:15px;line-height:21px;font-weight:400;color:#000;mar=
+gin:0;padding:0">       <p>Regards,<br />       Nalin Mehta<br />       Man=
+aging Editor<br />       <a href=3D"http://delivery.portfolio.moneycontrol.=
+com/PNULSRJC?id=3D186721=3DIk5SAA9QD1cDGlUHVAZWDwABBFcMAV4FVwJXBQ8AAwIHVlQF=
+AQJcBgsHA1YEW1YEC1FNAV1HDwNYVUNMXFlWDyFVD1BeChYGXQtKVVJXBwEKAQFVAQZfVw8FBw5=
+FXxJCEQhNHlMDVAxEA0QdSxNYRUZWXglRW0gJWV5UT1pYCEITXQ4fVAlVSmIoYyg2MX10DVlVGU=
+4H&fl=3DCUYWQURcF0pbCAdKEgpNRV1TWgBMWQcNWh5fU00YFA=3D=3D&ext=3DZT1LMkprRVI4=
+RmEyWjZDQmw5RFNaamZ3b0ZBQVJqYW1jMUtTUWxOVXhPQUFCdmIyTjdZMnBuTjNKd1FsRWtLVHN=
+rT1FVeEpGMWJXRkVYR2k1Nkt6OGtMbHhFVFhvNExqc3RQamt6UDF0Zlh4UVVOanNvUEQ4Mk4wa1=
+NSazRsTVEwaU0zaG9hUU1IQlFSZ2FHSjdaR01OZVFJQ0JBUmxhR3BwZTNnbE1VQmJia1ElMkJMR=
+DAlMkZkV0J3UEVoQ1dtc3pQelFxSWpZbWFVOCUzRCZyPWh0dHBzJTNBJTJGJTJGd3d3Lm1vbmV5=
+Y29udHJvbC5jb20lMkYmYz03MTY4MDgyODgmdG9rZW49QUZ4U0JRWlREQWdBJnRyeT0xJiRmb2x=
+sb3dfcmVkaXJlY3Q9dHJ1ZQ=3D=3D" rel=3D"noopener" target=3D"_blank" title=3D"=
+Moneycontrol"><strong>Moneycontrol</strong></a><br />       <br />       <e=
+m><a href=3D"http://delivery.portfolio.moneycontrol.com/PNULSRJC?id=3D18672=
+1=3DIk5SAA9QD1cDGgBXBgdUBwYEAlMJAAddBgEDUloCVlJXVlQDVVYJBFcCUwZRUVIBAFJNAV1=
+HDwNYVUNMXFlWDyFVD1BeChYGXQtKVVJXBwEKAQFVAQZfVw8FBw5FXxJCEQhNHlMDVAxEA0QdSx=
+NYRUZWXglRW0gJWV5UT1pYCEITXQ4fVAlVSmIoYyg2MX10DVlVGU4H&fl=3DCUYWQURcF0pbCAd=
+KEgpNRV1TWgBMWQcNWh5fU00YFA=3D=3D&ext=3DZT1LMkprRVI4RmEyWjZDQmw5RFNaamZ3b0Z=
+BQVJqYW1jMUtTUWxOVXhPQUFCdmIyTjdZMnBuTjNKd1FsRWtLVHNrT1FVeEpGMWJXRkVYR2k1Nk=
+t6OGtMbHhFVFhvNExqc3RQamt6UDF0Zlh4UVVOanNvUEQ4Mk4wa1NSazRsTVEwaU0zaG9hUU1IQ=
+lFSZ2FHSjdaR01OZVFJQ0JBUmxhR3BwZTNnbE1VQmJia1ElMkJMRDAlMkZkV0J3UEVoQ1dtc3pQ=
+elFxSWpZbWFVOCUzRCZyPWh0dHBzJTNBJTJGJTJGd3d3Lm1vbmV5Y29udHJvbC5jb20lMkZlZGl=
+0b3JzLXBpY2tzLXNpZ24tdXAlMkYmYz03MTY4MDgyODgmdG9rZW49QmwxUUJRVmJCd2tNQkElM0=
+QlM0QmdHJ5PTEmJGZvbGxvd19yZWRpcmVjdD10cnVl"><strong>If you&#39;d like Edito=
+r&#39;s Picks delivered straight to your inbox, subscribe now!</strong></a>=
+</em><br />       <br />       <em><a href=3D"http://delivery.portfolio.mon=
+eycontrol.com/PNULSRJC?id=3D186721=3DIk5SAA9QD1cDGlJcBlZTDlcBVAYIDV8AAgVTAw=
+kFVwcHVFQCDlUMAwACBgcEV1RWBwVNAV1HDwNYVUNMXFlWDyFVD1BeChYGXQtKVVJXBwEKAQFVA=
+QZfVw8FBw5FXxJCEQhNHlMDVAxEA0QdSxNYRUZWXglRW0gJWV5UT1pYCEITXQ4fVAlVSmIoYyg2=
+MX10DVlVGU4H&fl=3DCUYWQURcF0pbCAdKEgpNRV1TWgBMWQcNWh5fU00YFA=3D=3D&ext=3DZT=
+1LMkprRVI4RmEyWjZDQmw5RFNaamZ3b0ZBQVJqYW1jMUtTUWxOVXhPQUFCdmIyTjdZMnBuTjNKd=
+1FsRWtLVHNrT1FVeEpGMWJXRkVYR2k1Nkt6OGtMbHhFVFhvNExqc3RQamt6UDF0Zlh4UVVOanNv=
+UEQ4Mk4wa1NSazRsTVEwaU0zaG9hUU1IQlFSZ2FHSjdaR01OZVFJQ0JBUmxhR3BwZTNnbE1VQmJ=
+ia1ElMkJMRDAlMkZkV0J3UEVoQ1dtc3pQelFxSWpZbWFVOCUzRCZyPWh0dHBzJTNBJTJGJTJGd3=
+d3Lm1vbmV5Y29udHJvbC5jb20lMkZwcm9tb3MlMkZwcm8ucGhwJmM9NzE2ODA4Mjg4JnRva2VuP=
+UJsSmZBUU5XQmdjQUJRJTNEJTNEJnRyeT0xJiRmb2xsb3dfcmVkaXJlY3Q9dHJ1ZQ=3D=3D"><s=
+trong>Subscribe to Moneycontrol Pro to unlock exclusive features</strong></=
+a></em></p>       </div>       </td>      </tr>      <tr>       <td align=
+=3D"left" style=3D"font-family: 'Lato', Arial;font-size:18px;font-weight:30=
+0;color:#000;padding:15px 20px;background-color:#ffffff" valign=3D"top">   =
+    <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%">=
+        <tbody>         <tr>          <td align=3D"left" class=3D"arrowImg"=
+ style=3D"padding:10px;background-color:#EBF7EF;border-top-left-radius:6px;=
+border-bottom-left-radius:6px;width:7%;height:36px" valign=3D"middle"><img =
+alt=3D"" border=3D"0" height=3D"36" src=3D"https://images.moneycontrol.com/=
+mcnews/images/editor-pick-emailer/arrow.png" style=3D"padding-top:3px" widt=
+h=3D"36" /></td>          <td align=3D"left" class=3D"feedback" style=3D"fo=
+nt-family: 'Lato', Arial, sens-serif;color:#000;font-size:15px;line-height:=
+21px;font-weight:normal;padding:10px;background-color:#EBF7EF;border-top-ri=
+ght-radius:6px;border-bottom-right-radius:6px" valign=3D"middle">          =
+<p>Please send thoughts and feedback to <a href=3D"mailto:editor@moneycontr=
+ol.com">editor@moneycontrol.com</a>.</p>           <p>Read the previous edi=
+tion <a href=3D"#" id=3D"click_here" rel=3D"2025-02-27" title=3D"Editors Pi=
+cks">here</a>.</p>          </td>         </tr>        </tbody>       </tab=
+le>       </td>      </tr>      <tr>       <td align=3D"center" style=3D"ba=
+ckground:#FFFFFF;padding:0 20px 15px 20px" valign=3D"top">       <table cel=
+lpadding=3D"0" cellspacing=3D"0" width=3D"100%">        <tbody>         <tr=
+>          <td align=3D"left" style=3D"padding:0px 0 20px 0" valign=3D"top"=
+>          <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D=
+"100%">           <tbody>            <tr>             <td class=3D"followus=
+" style=3D"text-align:right;height:34px" valign=3D"middle"><span class=3D"f=
+ollowus" style=3D"padding-right:5px;font-family: 'Lato', Arial;font-size:14=
+px;line-height:34px;font-weight:normal;color:#000000;margin:0;text-align:ri=
+ght;display:inline-block;vertical-align:middle">Follow us: </span></td>    =
+         <td align=3D"left" style=3D"width:30px;height:30px;padding-left:5p=
+x" valign=3D"middle"><a class=3D"socials" href=3D"http://delivery.portfolio=
+.moneycontrol.com/PNULSRJC?id=3D186721=3DIk5SAA9QD1cDGgRVB1YCBwUCBwYBUAVQDw=
+ICBQoEXg9VA1YDAAMJVgYAA1dTVwMEUVZNAV1HDwNYVUNMXFlWDyFVD1BeChYGXQtKVVJXBwEKA=
+QFVAQZfVw8FBw5FXxJCEQhNHlMDVAxEA0QdSxNYRUZWXglRW0gJWV5UT1pYCEITXQ4fVAlVSmIo=
 Yyg2MX10DVlVGU4H&fl=3DCUYWQURcF0pbCAdKEgpNRV1TWgBMWQcNWh5fU00YFA=3D=3D&ext=
 =3DZT1LMkprRVI4RmEyWjZDQmw5RFNaamZ3b0ZBQVJqYW1jMUtTUWxOVXhPQUFCdmIyTjdZMnBu=
 TjNKd1FsRWtLVHNrT1FVeEpGMWJXRkVYR2k1Nkt6OGtMbHhFVFhvNExqc3RQamt6UDF0Zlh4UVV=
-OanNvUEQ4Mk4wa1NSazRsTVEwaU0zaG9hUU1IQlFSaWJXVnlaMnNOZVFJQ0JBUmxhR1JwZTNnbE=
+OanNvUEQ4Mk4wa1NSazRsTVEwaU0zaG9hUU1IQlFSZ2FHSjdaR01OZVFJQ0JBUmxhR3BwZTNnbE=
 1VQmJia1ElMkJMRDAlMkZkV0J3UEVoQ1dtc3pQelFxSWpZbWFVOCUzRCZyPWh0dHBzJTNBJTJGJ=
-TJGd3d3Lm1vbmV5Y29udHJvbC5jb20lMkZwcm9tb3MlMkZwcm8ucGhwJmM9NzE3MTQ3NTUyJnRv=
-a2VuPUJsSmZBUU5XQmdjQUJRJTNEJTNEJnRyeT0xJiRmb2xsb3dfcmVkaXJlY3Q9dHJ1ZQ=3D=
-=3D"><strong>Subscribe to Moneycontrol Pro to unlock exclusive features</st=
-rong></a></em></p>       </div>       </td>      </tr>      <tr>       <td =
-align=3D"left" style=3D"font-family: 'Lato', Arial;font-size:18px;font-weig=
-ht:300;color:#000;padding:15px 20px;background-color:#ffffff" valign=3D"top=
-">       <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"1=
-00%">        <tbody>         <tr>          <td align=3D"left" class=3D"arro=
-wImg" style=3D"padding:10px;background-color:#EBF7EF;border-top-left-radius=
-:6px;border-bottom-left-radius:6px;width:7%;height:36px" valign=3D"middle">=
-<img alt=3D"" border=3D"0" height=3D"36" src=3D"https://images.moneycontrol=
-.com/mcnews/images/editor-pick-emailer/arrow.png" style=3D"padding-top:3px"=
- width=3D"36" /></td>          <td align=3D"left" class=3D"feedback" style=
-=3D"font-family: 'Lato', Arial, sens-serif;color:#000;font-size:15px;line-h=
-eight:21px;font-weight:normal;padding:10px;background-color:#EBF7EF;border-=
-top-right-radius:6px;border-bottom-right-radius:6px" valign=3D"middle">    =
-      <p>Please send thoughts and feedback to <a href=3D"mailto:editor@mone=
-ycontrol.com">editor@moneycontrol.com</a>.</p>           <p>Read the previo=
-us edition <a href=3D"#" id=3D"click_here" rel=3D"2025-02-25" title=3D"Edit=
-ors Picks">here</a>.</p>          </td>         </tr>        </tbody>      =
- </table>       </td>      </tr>      <tr>       <td align=3D"center" style=
-=3D"background:#FFFFFF;padding:0 20px 15px 20px" valign=3D"top">       <tab=
-le cellpadding=3D"0" cellspacing=3D"0" width=3D"100%">        <tbody>      =
-   <tr>          <td align=3D"left" style=3D"padding:0px 0 20px 0" valign=
-=3D"top">          <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" =
-width=3D"100%">           <tbody>            <tr>             <td class=3D"=
-followus" style=3D"text-align:right;height:34px" valign=3D"middle"><span cl=
-ass=3D"followus" style=3D"padding-right:5px;font-family: 'Lato', Arial;font=
--size:14px;line-height:34px;font-weight:normal;color:#000000;margin:0;text-=
-align:right;display:inline-block;vertical-align:middle">Follow us: </span><=
-/td>             <td align=3D"left" style=3D"width:30px;height:30px;padding=
--left:5px" valign=3D"middle"><a class=3D"socials" href=3D"http://delivery.p=
-ortfolio.moneycontrol.com/PNULSRJC?id=3D186721=3DIk5SAA9QD1cDGlddBAEDUwMDBA=
-BbDQQHVFEJVQlVBwNRVFYCAQAKVVBUBlxUBVZVAABNAV1HDwNYVUNMXFlWDyFVD1BeChYGXQtKV=
-VJXBwICCANVAABXUgcICAdFXxJCEQhNHlMDVAxEA0QdSxNYRUZWXglRW0gJWV5UT1pYCEITXQ4f=
-VAlVSmIoYyg2MX10DVlVGU4H&fl=3DCUYWQURcF0pbCAdKEgpNRV1TWgBMWQcNWh5fU00YFA=3D=
-=3D&ext=3DZT1LMkprRVI4RmEyWjZDQmw5RFNaamZ3b0ZBQVJqYW1jMUtTUWxOVXhPQUFCdmIyT=
-jdZMnBuTjNKd1FsRWtLVHNrT1FVeEpGMWJXRkVYR2k1Nkt6OGtMbHhFVFhvNExqc3RQamt6UDF0=
-Zlh4UVVOanNvUEQ4Mk4wa1NSazRsTVEwaU0zaG9hUU1IQlFSaWJXVnlaMnNOZVFJQ0JBUmxhR1J=
-wZTNnbE1VQmJia1ElMkJMRDAlMkZkV0J3UEVoQ1dtc3pQelFxSWpZbWFVOCUzRCZyPWh0dHBzJT=
-NBJTJGJTJGd3d3LmZhY2Vib29rLmNvbSUyRm1vbmV5Y29udHJvbCZjPTcxNzE0NzU1MiZ0b2tlb=
-j1CbDFTQWdKYUFRTUZCZyUzRCUzRCZ0cnk9MSYkZm9sbG93X3JlZGlyZWN0PXRydWU=3D" styl=
-e=3D"display:inline-block;vertical-align:middle;height:30px" target=3D"_bla=
-nk" title=3D"Facebook"><img height=3D"30" src=3D"https://images.moneycontro=
-l.com/mcnews/images/editor-pick-emailer/facebook.png" width=3D"30" /></a></=
-td>             <td align=3D"left" style=3D"width:30px;height:30px;padding-=
-left:5px" valign=3D"middle"><a class=3D"socials" href=3D"http://delivery.po=
-rtfolio.moneycontrol.com/PNULSRJC?id=3D186721=3DIk5SAA9QD1cDGlNdAwBVUgoIUFV=
-cVgdRAwUBAV0DAwQHBVEEDwAMUQUAB1JTBwUPAlNNAV1HDwNYVUNMXFlWDyFVD1BeChYGXQtKVV=
-JXBwICCANVAABXUgcICAdFXxJCEQhNHlMDVAxEA0QdSxNYRUZWXglRW0gJWV5UT1pYCEITXQ4fV=
-AlVSmIoYyg2MX10DVlVGU4H&fl=3DCUYWQURcF0pbCAdKEgpNRV1TWgBMWQcNWh5fU00YFA=3D=
-=3D&ext=3DZT1LMkprRVI4RmEyWjZDQmw5RFNaamZ3b0ZBQVJqYW1jMUtTUWxOVXhPQUFCdmIyT=
-jdZMnBuTjNKd1FsRWtLVHNrT1FVeEpGMWJXRkVYR2k1Nkt6OGtMbHhFVFhvNExqc3RQamt6UDF0=
-Zlh4UVVOanNvUEQ4Mk4wa1NSazRsTVEwaU0zaG9hUU1IQlFSaWJXVnlaMnNOZVFJQ0JBUmxhR1J=
-wZTNnbE1VQmJia1ElMkJMRDAlMkZkV0J3UEVoQ1dtc3pQelFxSWpZbWFVOCUzRCZyPWh0dHBzJT=
-NBJTJGJTJGdHdpdHRlci5jb20lMkZtb25leWNvbnRyb2xjb20mYz03MTcxNDc1NTImdG9rZW49Q=
-mwxVkJ3cFdBZ0VDQ3clM0QlM0QmdHJ5PTEmJGZvbGxvd19yZWRpcmVjdD10cnVl" style=3D"d=
-isplay:inline-block;vertical-align:middle;height:30px" target=3D"_blank" ti=
-tle=3D"Twitter"><img height=3D"30" src=3D"https://images.moneycontrol.com/m=
-cnews/images/editor-pick-emailer/twitter.png" width=3D"30" /></a></td>     =
-        <td align=3D"left" style=3D"width:30px;height:30px;padding-left:5px=
-" valign=3D"middle"><a class=3D"socials" href=3D"http://delivery.portfolio.=
-moneycontrol.com/PNULSRJC?id=3D186721=3DIk5SAA9QD1cDGgRUUQAEUlYFBFIOVgcHBFZ=
-TAw5TAA9WAgMEDwBcVwEFV10GAlZVClZNAV1HDwNYVUNMXFlWDyFVD1BeChYGXQtKVVJXBwICCA=
-NVAABXUgcICAdFXxJCEQhNHlMDVAxEA0QdSxNYRUZWXglRW0gJWV5UT1pYCEITXQ4fVAlVSmIoY=
-yg2MX10DVlVGU4H&fl=3DCUYWQURcF0pbCAdKEgpNRV1TWgBMWQcNWh5fU00YFA=3D=3D&ext=
+TJGd3d3LmZhY2Vib29rLmNvbSUyRm1vbmV5Y29udHJvbCZjPTcxNjgwODI4OCZ0b2tlbj1CbDFT=
+QWdKYUFRTUZCZyUzRCUzRCZ0cnk9MSYkZm9sbG93X3JlZGlyZWN0PXRydWU=3D" style=3D"di=
+splay:inline-block;vertical-align:middle;height:30px" target=3D"_blank" tit=
+le=3D"Facebook"><img height=3D"30" src=3D"https://images.moneycontrol.com/m=
+cnews/images/editor-pick-emailer/facebook.png" width=3D"30" /></a></td>    =
+         <td align=3D"left" style=3D"width:30px;height:30px;padding-left:5p=
+x" valign=3D"middle"><a class=3D"socials" href=3D"http://delivery.portfolio=
+.moneycontrol.com/PNULSRJC?id=3D186721=3DIk5SAA9QD1cDGlQAVlIBAlZTAl0OBVFTUg=
+BXVVxTAANXUVUJUgAMVAJQB1NWU1IDB1FNAV1HDwNYVUNMXFlWDyFVD1BeChYGXQtKVVJXBwEKA=
+QFVAQZfVw8FBw5FXxJCEQhNHlMDVAxEA0QdSxNYRUZWXglRW0gJWV5UT1pYCEITXQ4fVAlVSmIo=
+Yyg2MX10DVlVGU4H&fl=3DCUYWQURcF0pbCAdKEgpNRV1TWgBMWQcNWh5fU00YFA=3D=3D&ext=
 =3DZT1LMkprRVI4RmEyWjZDQmw5RFNaamZ3b0ZBQVJqYW1jMUtTUWxOVXhPQUFCdmIyTjdZMnBu=
 TjNKd1FsRWtLVHNrT1FVeEpGMWJXRkVYR2k1Nkt6OGtMbHhFVFhvNExqc3RQamt6UDF0Zlh4UVV=
-OanNvUEQ4Mk4wa1NSazRsTVEwaU0zaG9hUU1IQlFSaWJXVnlaMnNOZVFJQ0JBUmxhR1JwZTNnbE=
+OanNvUEQ4Mk4wa1NSazRsTVEwaU0zaG9hUU1IQlFSZ2FHSjdaR01OZVFJQ0JBUmxhR3BwZTNnbE=
 1VQmJia1ElMkJMRDAlMkZkV0J3UEVoQ1dtc3pQelFxSWpZbWFVOCUzRCZyPWh0dHBzJTNBJTJGJ=
-TJGd3d3Lmluc3RhZ3JhbS5jb20lMkZtb25leWNvbnRyb2xjb20lMkYmYz03MTcxNDc1NTImdG9r=
-ZW49R2wxUkNBVlZCd1VEJnRyeT0xJiRmb2xsb3dfcmVkaXJlY3Q9dHJ1ZQ=3D=3D" style=3D"=
-display:inline-block;vertical-align:middle;height:30px" target=3D"_blank" t=
-itle=3D"Instagram"><img height=3D"30" src=3D"https://images.moneycontrol.co=
-m/mcnews/images/editor-pick-emailer/instagram.png" width=3D"30" /></a></td>=
-             <td align=3D"left" style=3D"width:30px;height:30px;padding-lef=
-t:5px" valign=3D"middle"><a class=3D"socials" href=3D"http://delivery.portf=
-olio.moneycontrol.com/PNULSRJC?id=3D186721=3DIk5SAA9QD1cDGgRcXFZRVgMAAwELBl=
-ZSBQYDBlpUVVcAA1UIUl5ZAwFRU1VRV1YDBAFNAV1HDwNYVUNMXFlWDyFVD1BeChYGXQtKVVJXB=
-wICCANVAABXUgcICAdFXxJCEQhNHlMDVAxEA0QdSxNYRUZWXglRW0gJWV5UT1pYCEITXQ4fVAlV=
-SmIoYyg2MX10DVlVGU4H&fl=3DCUYWQURcF0pbCAdKEgpNRV1TWgBMWQcNWh5fU00YFA=3D=3D&=
-ext=3DZT1LMkprRVI4RmEyWjZDQmw5RFNaamZ3b0ZBQVJqYW1jMUtTUWxOVXhPQUFCdmIyTjdZM=
-nBuTjNKd1FsRWtLVHNrT1FVeEpGMWJXRkVYR2k1Nkt6OGtMbHhFVFhvNExqc3RQamt6UDF0Zlh4=
-UVVOanNvUEQ4Mk4wa1NSazRsTVEwaU0zaG9hUU1IQlFSaWJXVnlaMnNOZVFJQ0JBUmxhR1JwZTN=
-nbE1VQmJia1ElMkJMRDAlMkZkV0J3UEVoQ1dtc3pQelFxSWpZbWFVOCUzRCZyPWh0dHBzJTNBJT=
-JGJTJGd3d3LmxpbmtlZGluLmNvbSUyRmNvbXBhbnklMkZtb25leWNvbnRyb2wmYz03MTcxNDc1N=
-TImdG9rZW49R2xkVkNRQlNEUVFEQ2clM0QlM0QmdHJ5PTEmJGZvbGxvd19yZWRpcmVjdD10cnVl=
-" style=3D"display:inline-block;vertical-align:middle;height:30px" target=
-=3D"_blank" title=3D"Linkedin"><img height=3D"30" src=3D"https://images.mon=
-eycontrol.com/mcnews/images/editor-pick-emailer/linkdin.png" width=3D"30" /=
-></a></td>             <td align=3D"left" style=3D"width:30px;height:30px;p=
-adding-left:5px" valign=3D"middle"><a class=3D"socials" href=3D"http://deli=
-very.portfolio.moneycontrol.com/PNULSRJC?id=3D186721=3DIk5SAA9QD1cDGgVWAFcE=
-BAYDBAMIVQAAAglSAQwGAg9UAVFQU18LXAZTBlMGVwYDAglNAV1HDwNYVUNMXFlWDyFVD1BeChY=
-GXQtKVVJXBwICCANVAABXUgcICAdFXxJCEQhNHlMDVAxEA0QdSxNYRUZWXglRW0gJWV5UT1pYCE=
-ITXQ4fVAlVSmIoYyg2MX10DVlVGU4H&fl=3DCUYWQURcF0pbCAdKEgpNRV1TWgBMWQcNWh5fU00=
-YFA=3D=3D&ext=3DZT1LMkprRVI4RmEyWjZDQmw5RFNaamZ3b0ZBQVJqYW1jMUtTUWxOVXhPQUF=
-CdmIyTjdZMnBuTjNKd1FsRWtLVHNrT1FVeEpGMWJXRkVYR2k1Nkt6OGtMbHhFVFhvNExqc3RQam=
-t6UDF0Zlh4UVVOanNvUEQ4Mk4wa1NSazRsTVEwaU0zaG9hUU1IQlFSaWJXVnlaMnNOZVFJQ0JBU=
-mxhR1JwZTNnbE1VQmJia1ElMkJMRDAlMkZkV0J3UEVoQ1dtc3pQelFxSWpZbWFVOCUzRCZyPWh0=
-dHBzJTNBJTJGJTJGdC5tZSUyRm1vbmV5Y29udHJvbGNvbSZjPTcxNzE0NzU1MiZ0b2tlbj1EbEZ=
-UQXd0YkJ3UUQmdHJ5PTEmJGZvbGxvd19yZWRpcmVjdD10cnVl" style=3D"display:inline-=
-block;vertical-align:middle;height:30px" target=3D"_blank" title=3D"Telegra=
-m"><img height=3D"30" src=3D"https://images.moneycontrol.com/mcnews/images/=
-editor-pick-emailer/telegram.png" width=3D"30" /></a></td>             <td =
-align=3D"left" style=3D"width:30px;height:30px;padding-left:5px" valign=3D"=
-middle"><a class=3D"socials" href=3D"http://delivery.portfolio.moneycontrol=
-.com/PNULSRJC?id=3D186721=3DIk5SAA9QD1cDGgVRUVBWAAIFV1cLVlAHDlVVDlpRVlVVVgd=
-VDlMMXVdXAlRTBQ5RVFRNAV1HDwNYVUNMXFlWDyFVD1BeChYGXQtKVVJXBwICCANVAABXUgcICA=
-dFXxJCEQhNHlMDVAxEA0QdSxNYRUZWXglRW0gJWV5UT1pYCEITXQ4fVAlVSmIoYyg2MX10DVlVG=
-U4H&fl=3DCUYWQURcF0pbCAdKEgpNRV1TWgBMWQcNWh5fU00YFA=3D=3D&ext=3DZT1LMkprRVI=
-4RmEyWjZDQmw5RFNaamZ3b0ZBQVJqYW1jMUtTUWxOVXhPQUFCdmIyTjdZMnBuTjNKd1FsRWtLVH=
-NrT1FVeEpGMWJXRkVYR2k1Nkt6OGtMbHhFVFhvNExqc3RQamt6UDF0Zlh4UVVOanNvUEQ4Mk4wa=
-1NSazRsTVEwaU0zaG9hUU1IQlFSaWJXVnlaMnNOZVFJQ0JBUmxhR1JwZTNnbE1VQmJia1ElMkJM=
-RDAlMkZkV0J3UEVoQ1dtc3pQelFxSWpZbWFVOCUzRCZyPWh0dHBzJTNBJTJGJTJGd3d3LnlvdXR=
-1YmUuY29tJTJGJTQwbW9uZXljb250cm9sJmM9NzE3MTQ3NTUyJnRva2VuPUExRlZCUVJSQWdjQy=
-Z0cnk9MSYkZm9sbG93X3JlZGlyZWN0PXRydWU=3D" style=3D"display:inline-block;ver=
-tical-align:middle;height:30px" target=3D"_blank" title=3D"youtube"><img he=
-ight=3D"30" src=3D"https://images.moneycontrol.com/mcnews/images/editor-pic=
-k-emailer/youtube.png" width=3D"30" /></a></td>            </tr>           =
-</tbody>          </table>          </td>         </tr>         <tr>       =
-   <td>          <table cellpadding=3D"0" cellspacing=3D"0" width=3D"100%">=
-           <tbody>            <tr>             <td align=3D"left" style=3D"=
-background-color:#333;height:1px;margin:10px 0"> </td>            </tr>    =
-       </tbody>          </table>          </td>         </tr>         <tr>=
-          <td>          <table cellpadding=3D"0" cellspacing=3D"0" width=3D=
-"100%">           <tbody>            <tr>             <td align=3D"right" s=
-tyle=3D"font-family:'Lato', Arial;font-size:11px;line-height:13px;font-weig=
-ht:normal;color:#000000;padding:12px 0"><a alt=3D"Terms & Conditions" href=
-=3D"http://delivery.portfolio.moneycontrol.com/PNULSRJC?id=3D186721=3DIk5SA=
-A9QD1cDGgdSAFNTAVEAUldZV1NTD1QDUw4CUFdYU1ZTBlEIXQMCVAIBVg8EAFNNAV1HDwNYVUNM=
-XFlWDyFVD1BeChYGXQtKVVJXBwICCANVAABXUgcICAdFXxJCEQhNHlMDVAxEA0QdSxNYRUZWXgl=
-RW0gJWV5UT1pYCEITXQ4fVAlVSmIoYyg2MX10DVlVGU4H&fl=3DCUYWQURcF0pbCAdKEgpNRV1T=
-WgBMWQcNWh5fU00YFA=3D=3D&ext=3DZT1LMkprRVI4RmEyWjZDQmw5RFNaamZ3b0ZBQVJqYW1j=
-MUtTUWxOVXhPQUFCdmIyTjdZMnBuTjNKd1FsRWtLVHNrT1FVeEpGMWJXRkVYR2k1Nkt6OGtMbHh=
-FVFhvNExqc3RQamt6UDF0Zlh4UVVOanNvUEQ4Mk4wa1NSazRsTVEwaU0zaG9hUU1IQlFSaWJXVn=
-laMnNOZVFJQ0JBUmxhR1JwZTNnbE1VQmJia1ElMkJMRDAlMkZkV0J3UEVoQ1dtc3pQelFxSWpZb=
-WFVOCUzRCZyPWh0dHBzJTNBJTJGJTJGd3d3Lm1vbmV5Y29udHJvbC5jb20lMkZjZGF0YSUyRnRl=
-cm1zb2Z1c2UucGhwJmM9NzE3MTQ3NTUyJnRva2VuPUJsUlFBUVZYQUFJRUJnJTNEJTNEJnRyeT0=
-xJiRmb2xsb3dfcmVkaXJlY3Q9dHJ1ZQ=3D=3D" style=3D"color:#000000;text-decorati=
-on:none" target=3D"_blank" title=3D"Terms & Conditions">Terms & Conditions<=
-/a> | <a alt=3D"Privacy Policy" href=3D"http://delivery.portfolio.moneycont=
-rol.com/PNULSRJC?id=3D186721=3DIk5SAA9QD1cDGg5WVwYDAgoEAVcMBgNWDwYJAgtRU1cH=
-AloDVgAKVFcDV1VXUwIFAAVNAV1HDwNYVUNMXFlWDyFVD1BeChYGXQtKVVJXBwICCANVAABXUgc=
-ICAdFXxJCEQhNHlMDVAxEA0QdSxNYRUZWXglRW0gJWV5UT1pYCEITXQ4fVAlVSmIoYyg2MX10DV=
-lVGU4H&fl=3DCUYWQURcF0pbCAdKEgpNRV1TWgBMWQcNWh5fU00YFA=3D=3D&ext=3DZT1LMkpr=
-RVI4RmEyWjZDQmw5RFNaamZ3b0ZBQVJqYW1jMUtTUWxOVXhPQUFCdmIyTjdZMnBuTjNKd1FsRWt=
-LVHNrT1FVeEpGMWJXRkVYR2k1Nkt6OGtMbHhFVFhvNExqc3RQamt6UDF0Zlh4UVVOanNvUEQ4Mk=
-4wa1NSazRsTVEwaU0zaG9hUU1IQlFSaWJXVnlaMnNOZVFJQ0JBUmxhR1JwZTNnbE1VQmJia1ElM=
-kJMRDAlMkZkV0J3UEVoQ1dtc3pQelFxSWpZbWFVOCUzRCZyPWh0dHBzJTNBJTJGJTJGd3d3Lm1v=
-bmV5Y29udHJvbC5jb20lMkZjZGF0YSUyRnByaXZhY3lwb2xpY3kucGhwJmM9NzE3MTQ3NTUyJnR=
-va2VuPUdsWldBQXRSQmdjQ0F3YyUzRCZ0cnk9MSYkZm9sbG93X3JlZGlyZWN0PXRydWU=3D" st=
-yle=3D"color:#000000;text-decoration:none" target=3D"_blank" title=3D"Priva=
-cy Policy">Privacy Policy</a></td>            </tr>           </tbody>     =
-     </table>          </td>         </tr>        </tbody>       </table>  =
-     </td>      </tr>     </tbody>    </table>    </td>   </tr>  </tbody> <=
-/table> <p>&nbsp;<br></p>=0A=
+TJGdHdpdHRlci5jb20lMkZtb25leWNvbnRyb2xjb20mYz03MTY4MDgyODgmdG9rZW49QmwxVkJ3=
+cFdBZ0VDQ3clM0QlM0QmdHJ5PTEmJGZvbGxvd19yZWRpcmVjdD10cnVl" style=3D"display:=
+inline-block;vertical-align:middle;height:30px" target=3D"_blank" title=3D"=
+Twitter"><img height=3D"30" src=3D"https://images.moneycontrol.com/mcnews/i=
+mages/editor-pick-emailer/twitter.png" width=3D"30" /></a></td>            =
+ <td align=3D"left" style=3D"width:30px;height:30px;padding-left:5px" valig=
+n=3D"middle"><a class=3D"socials" href=3D"http://delivery.portfolio.moneyco=
+ntrol.com/PNULSRJC?id=3D186721=3DIk5SAA9QD1cDGgRQXVpTBVBWBwZcAVEFAgQAAg0FV1=
+JVBlsDVFBZXAtWVAIBVFEHBQJNAV1HDwNYVUNMXFlWDyFVD1BeChYGXQtKVVJXBwEKAQFVAQZfV=
+w8FBw5FXxJCEQhNHlMDVAxEA0QdSxNYRUZWXglRW0gJWV5UT1pYCEITXQ4fVAlVSmIoYyg2MX10=
+DVlVGU4H&fl=3DCUYWQURcF0pbCAdKEgpNRV1TWgBMWQcNWh5fU00YFA=3D=3D&ext=3DZT1LMk=
+prRVI4RmEyWjZDQmw5RFNaamZ3b0ZBQVJqYW1jMUtTUWxOVXhPQUFCdmIyTjdZMnBuTjNKd1FsR=
+WtLVHNrT1FVeEpGMWJXRkVYR2k1Nkt6OGtMbHhFVFhvNExqc3RQamt6UDF0Zlh4UVVOanNvUEQ4=
+Mk4wa1NSazRsTVEwaU0zaG9hUU1IQlFSZ2FHSjdaR01OZVFJQ0JBUmxhR3BwZTNnbE1VQmJia1E=
+lMkJMRDAlMkZkV0J3UEVoQ1dtc3pQelFxSWpZbWFVOCUzRCZyPWh0dHBzJTNBJTJGJTJGd3d3Lm=
+luc3RhZ3JhbS5jb20lMkZtb25leWNvbnRyb2xjb20lMkYmYz03MTY4MDgyODgmdG9rZW49R2wxU=
+kNBVlZCd1VEJnRyeT0xJiRmb2xsb3dfcmVkaXJlY3Q9dHJ1ZQ=3D=3D" style=3D"display:i=
+nline-block;vertical-align:middle;height:30px" target=3D"_blank" title=3D"I=
+nstagram"><img height=3D"30" src=3D"https://images.moneycontrol.com/mcnews/=
+images/editor-pick-emailer/instagram.png" width=3D"30" /></a></td>         =
+    <td align=3D"left" style=3D"width:30px;height:30px;padding-left:5px" va=
+lign=3D"middle"><a class=3D"socials" href=3D"http://delivery.portfolio.mone=
+ycontrol.com/PNULSRJC?id=3D186721=3DIk5SAA9QD1cDGg9dUwBTAAdUBgBZVwVSDwhXBws=
+CVVUHAVUEBQQOBgNTUgdQAg9UBFRNAV1HDwNYVUNMXFlWDyFVD1BeChYGXQtKVVJXBwEKAQFVAQ=
+ZfVw8FBw5FXxJCEQhNHlMDVAxEA0QdSxNYRUZWXglRW0gJWV5UT1pYCEITXQ4fVAlVSmIoYyg2M=
+X10DVlVGU4H&fl=3DCUYWQURcF0pbCAdKEgpNRV1TWgBMWQcNWh5fU00YFA=3D=3D&ext=3DZT1=
+LMkprRVI4RmEyWjZDQmw5RFNaamZ3b0ZBQVJqYW1jMUtTUWxOVXhPQUFCdmIyTjdZMnBuTjNKd1=
+FsRWtLVHNrT1FVeEpGMWJXRkVYR2k1Nkt6OGtMbHhFVFhvNExqc3RQamt6UDF0Zlh4UVVOanNvU=
+EQ4Mk4wa1NSazRsTVEwaU0zaG9hUU1IQlFSZ2FHSjdaR01OZVFJQ0JBUmxhR3BwZTNnbE1VQmJi=
+a1ElMkJMRDAlMkZkV0J3UEVoQ1dtc3pQelFxSWpZbWFVOCUzRCZyPWh0dHBzJTNBJTJGJTJGd3d=
+3LmxpbmtlZGluLmNvbSUyRmNvbXBhbnklMkZtb25leWNvbnRyb2wmYz03MTY4MDgyODgmdG9rZW=
+49R2xkVkNRQlNEUVFEQ2clM0QlM0QmdHJ5PTEmJGZvbGxvd19yZWRpcmVjdD10cnVl" style=
+=3D"display:inline-block;vertical-align:middle;height:30px" target=3D"_blan=
+k" title=3D"Linkedin"><img height=3D"30" src=3D"https://images.moneycontrol=
+.com/mcnews/images/editor-pick-emailer/linkdin.png" width=3D"30" /></a></td=
+>             <td align=3D"left" style=3D"width:30px;height:30px;padding-le=
+ft:5px" valign=3D"middle"><a class=3D"socials" href=3D"http://delivery.port=
+folio.moneycontrol.com/PNULSRJC?id=3D186721=3DIk5SAA9QD1cDGgBcVwFWBlBSCAYAD=
+FJcVAhSVwAOBw5XAFcGAgQJUQoDDgVSVgIOUwRNAV1HDwNYVUNMXFlWDyFVD1BeChYGXQtKVVJX=
+BwEKAQFVAQZfVw8FBw5FXxJCEQhNHlMDVAxEA0QdSxNYRUZWXglRW0gJWV5UT1pYCEITXQ4fVAl=
+VSmIoYyg2MX10DVlVGU4H&fl=3DCUYWQURcF0pbCAdKEgpNRV1TWgBMWQcNWh5fU00YFA=3D=3D=
+&ext=3DZT1LMkprRVI4RmEyWjZDQmw5RFNaamZ3b0ZBQVJqYW1jMUtTUWxOVXhPQUFCdmIyTjdZ=
+MnBuTjNKd1FsRWtLVHNrT1FVeEpGMWJXRkVYR2k1Nkt6OGtMbHhFVFhvNExqc3RQamt6UDF0Zlh=
+4UVVOanNvUEQ4Mk4wa1NSazRsTVEwaU0zaG9hUU1IQlFSZ2FHSjdaR01OZVFJQ0JBUmxhR3BwZT=
+NnbE1VQmJia1ElMkJMRDAlMkZkV0J3UEVoQ1dtc3pQelFxSWpZbWFVOCUzRCZyPWh0dHBzJTNBJ=
+TJGJTJGdC5tZSUyRm1vbmV5Y29udHJvbGNvbSZjPTcxNjgwODI4OCZ0b2tlbj1EbEZUQXd0YkJ3=
+UUQmdHJ5PTEmJGZvbGxvd19yZWRpcmVjdD10cnVl" style=3D"display:inline-block;ver=
+tical-align:middle;height:30px" target=3D"_blank" title=3D"Telegram"><img h=
+eight=3D"30" src=3D"https://images.moneycontrol.com/mcnews/images/editor-pi=
+ck-emailer/telegram.png" width=3D"30" /></a></td>             <td align=3D"=
+left" style=3D"width:30px;height:30px;padding-left:5px" valign=3D"middle"><=
+a class=3D"socials" href=3D"http://delivery.portfolio.moneycontrol.com/PNUL=
+SRJC?id=3D186721=3DIk5SAA9QD1cDGgdTUwVWB1EJUFQABlJVUAQHVFpSVldWCgYBBFNbVFdT=
+AwJQVwRSAlFNAV1HDwNYVUNMXFlWDyFVD1BeChYGXQtKVVJXBwEKAQFVAQZfVw8FBw5FXxJCEQh=
+NHlMDVAxEA0QdSxNYRUZWXglRW0gJWV5UT1pYCEITXQ4fVAlVSmIoYyg2MX10DVlVGU4H&fl=3D=
+CUYWQURcF0pbCAdKEgpNRV1TWgBMWQcNWh5fU00YFA=3D=3D&ext=3DZT1LMkprRVI4RmEyWjZD=
+Qmw5RFNaamZ3b0ZBQVJqYW1jMUtTUWxOVXhPQUFCdmIyTjdZMnBuTjNKd1FsRWtLVHNrT1FVeEp=
+GMWJXRkVYR2k1Nkt6OGtMbHhFVFhvNExqc3RQamt6UDF0Zlh4UVVOanNvUEQ4Mk4wa1NSazRsTV=
+EwaU0zaG9hUU1IQlFSZ2FHSjdaR01OZVFJQ0JBUmxhR3BwZTNnbE1VQmJia1ElMkJMRDAlMkZkV=
+0J3UEVoQ1dtc3pQelFxSWpZbWFVOCUzRCZyPWh0dHBzJTNBJTJGJTJGd3d3LnlvdXR1YmUuY29t=
+JTJGJTQwbW9uZXljb250cm9sJmM9NzE2ODA4Mjg4JnRva2VuPUExRlZCUVJSQWdjQyZ0cnk9MSY=
+kZm9sbG93X3JlZGlyZWN0PXRydWU=3D" style=3D"display:inline-block;vertical-ali=
+gn:middle;height:30px" target=3D"_blank" title=3D"youtube"><img height=3D"3=
+0" src=3D"https://images.moneycontrol.com/mcnews/images/editor-pick-emailer=
+/youtube.png" width=3D"30" /></a></td>            </tr>           </tbody> =
+         </table>          </td>         </tr>         <tr>          <td>  =
+        <table cellpadding=3D"0" cellspacing=3D"0" width=3D"100%">         =
+  <tbody>            <tr>             <td align=3D"left" style=3D"backgroun=
+d-color:#333;height:1px;margin:10px 0"> </td>            </tr>           </=
+tbody>          </table>          </td>         </tr>         <tr>         =
+ <td>          <table cellpadding=3D"0" cellspacing=3D"0" width=3D"100%">  =
+         <tbody>            <tr>             <td align=3D"right" style=3D"f=
+ont-family:'Lato', Arial;font-size:11px;line-height:13px;font-weight:normal=
+;color:#000000;padding:12px 0"><a alt=3D"Terms & Conditions" href=3D"http:/=
+/delivery.portfolio.moneycontrol.com/PNULSRJC?id=3D186721=3DIk5SAA9QD1cDGlQ=
+HBloHBgoDUlQIVVZXBVUEBg0PUAFVBlsABFMPVgFeA1RVWwUPUwVNAV1HDwNYVUNMXFlWDyFVD1=
+BeChYGXQtKVVJXBwEKAQFVAQZfVw8FBw5FXxJCEQhNHlMDVAxEA0QdSxNYRUZWXglRW0gJWV5UT=
+1pYCEITXQ4fVAlVSmIoYyg2MX10DVlVGU4H&fl=3DCUYWQURcF0pbCAdKEgpNRV1TWgBMWQcNWh=
+5fU00YFA=3D=3D&ext=3DZT1LMkprRVI4RmEyWjZDQmw5RFNaamZ3b0ZBQVJqYW1jMUtTUWxOVX=
+hPQUFCdmIyTjdZMnBuTjNKd1FsRWtLVHNrT1FVeEpGMWJXRkVYR2k1Nkt6OGtMbHhFVFhvNExqc=
+3RQamt6UDF0Zlh4UVVOanNvUEQ4Mk4wa1NSazRsTVEwaU0zaG9hUU1IQlFSZ2FHSjdaR01OZVFJ=
+Q0JBUmxhR3BwZTNnbE1VQmJia1ElMkJMRDAlMkZkV0J3UEVoQ1dtc3pQelFxSWpZbWFVOCUzRCZ=
+yPWh0dHBzJTNBJTJGJTJGd3d3Lm1vbmV5Y29udHJvbC5jb20lMkZjZGF0YSUyRnRlcm1zb2Z1c2=
+UucGhwJmM9NzE2ODA4Mjg4JnRva2VuPUJsUlFBUVZYQUFJRUJnJTNEJTNEJnRyeT0xJiRmb2xsb=
+3dfcmVkaXJlY3Q9dHJ1ZQ=3D=3D" style=3D"color:#000000;text-decoration:none" t=
+arget=3D"_blank" title=3D"Terms & Conditions">Terms & Conditions</a> | <a a=
+lt=3D"Privacy Policy" href=3D"http://delivery.portfolio.moneycontrol.com/PN=
+ULSRJC?id=3D186721=3DIk5SAA9QD1cDGg8FVQZWDlYHAFAOUgACAFZSBQ8PA1dRAFYHAlZdAQ=
+BWAwUBB1IBV1RNAV1HDwNYVUNMXFlWDyFVD1BeChYGXQtKVVJXBwEKAQFVAQZfVw8FBw5FXxJCE=
+QhNHlMDVAxEA0QdSxNYRUZWXglRW0gJWV5UT1pYCEITXQ4fVAlVSmIoYyg2MX10DVlVGU4H&fl=
+=3DCUYWQURcF0pbCAdKEgpNRV1TWgBMWQcNWh5fU00YFA=3D=3D&ext=3DZT1LMkprRVI4RmEyW=
+jZDQmw5RFNaamZ3b0ZBQVJqYW1jMUtTUWxOVXhPQUFCdmIyTjdZMnBuTjNKd1FsRWtLVHNrT1FV=
+eEpGMWJXRkVYR2k1Nkt6OGtMbHhFVFhvNExqc3RQamt6UDF0Zlh4UVVOanNvUEQ4Mk4wa1NSazR=
+sTVEwaU0zaG9hUU1IQlFSZ2FHSjdaR01OZVFJQ0JBUmxhR3BwZTNnbE1VQmJia1ElMkJMRDAlMk=
+ZkV0J3UEVoQ1dtc3pQelFxSWpZbWFVOCUzRCZyPWh0dHBzJTNBJTJGJTJGd3d3Lm1vbmV5Y29ud=
+HJvbC5jb20lMkZjZGF0YSUyRnByaXZhY3lwb2xpY3kucGhwJmM9NzE2ODA4Mjg4JnRva2VuPUds=
+WldBQXRSQmdjQ0F3YyUzRCZ0cnk9MSYkZm9sbG93X3JlZGlyZWN0PXRydWU=3D" style=3D"co=
+lor:#000000;text-decoration:none" target=3D"_blank" title=3D"Privacy Policy=
+">Privacy Policy</a></td>            </tr>           </tbody>          </ta=
+ble>          </td>         </tr>        </tbody>       </table>       </td=
+>      </tr>     </tbody>    </table>    </td>   </tr>  </tbody> </table> <=
+p>&nbsp;<br></p>=0A=
 =0A=
 Click <a href=3D"http://delivery.portfolio.moneycontrol.com/PNULSRJC?id=3D1=
 86721=3DNE5SAA9QD1cDGhZERUMXFxIQEUUYFEZEFhARFhkXRhZBEkIRF0YYRRJGFkRFQxcXEgB=
-NAV1HDwNYVUNMXFlWDyFVD1BeChYGXQtKVVJXBwICCANVAABXUgcICAdFXxJCEQhNHlMDVAxEA0=
+NAV1HDwNYVUNMXFlWDyFVD1BeChYGXQtKVVJXBwEKAQFVAQZfVw8FBw5FXxJCEQhNHlMDVAxEA0=
 QdSxNYRUZWXglRW0gJWV5UT1pYCEITXQ4fVAlVSmIoYyg2MX10DVlVGU4H">here</a> to uns=
 ubscribe=0A=
 <img id=3D'SBBBB' src=3D'http://delivery.portfolio.moneycontrol.com/PNULSRJ=
 C?id=3D186721=3DLk5SAA9QD1cDGhZERUMXFxIQEUUYFEZEFhARFhkXRhZBEkIRF0YYRRJGFkR=
-FQxcXEgBNAV1HDwNYVUNMXFlWDyFVD1BeChYGXQtKVVJXBwICCANVAABXUgcICAdFXxJCEQhNHl=
+FQxcXEgBNAV1HDwNYVUNMXFlWDyFVD1BeChYGXQtKVVJXBwEKAQFVAQZfVw8FBw5FXxJCEQhNHl=
 MDVAxEA0QdSxNYRUZWXglRW0gJWV5UT1pYCEITXQ4fVAlVSmIoYyg2MX10DVlVGU4H' /></bod=
 y> </html> </!doctype><img  alt=3D"" border=3D"0" height=3D"1" width=3D"1" =
 src=3D"https://in1.wizrocketmail.net/r?e=3DK2JkER8Fa2Z6CBl9DSZjfwoFAARjamc1=
 KSQlNUxOAABvb2N7Y2pnN3JwQlEkKTskOQUxJF1bWFEXGi56Kz8kLlxETXo4LjstPjkzP1tfXxQ=
-BMzc8Mj4uMBBHS0Y8BTsvdWBwegUEAQFgbWt7ZgVgewAFAQZlbHBndS0oOVlvQV0hNSZpbXglMU=
-BbblAyPDM%2BOy5wNg%3D%3D&c=3D669131776"></img>=0A=
+BMzc8Mj4uMBBHS0Y8BTsvdWBwegUEAQNlamJ4bgVgewAFAQZlYnBndS0oOVlvQV0hNSZpbXglMU=
+BbblAyPDM%2BOy5wNg%3D%3D&c=3D668813344"></img>=0A=
 
 
-------=_Part_1395720_122299755.1740578470028--
+------=_Part_340886_1479465423.1740755590402--
