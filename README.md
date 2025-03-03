@@ -9,10 +9,6 @@ This project is designed for **individual use** to analyze phishing emails effec
 - Provides a detailed report on suspicious emails
 - Can be customized for enterprise use (email for details)
 
-## Contact for Large-Scale Use
-If you are interested in **deploying this tool at a larger scale** or **integrating it with a firewall**, email me at:
-📩 **[devangbisht43@gmail.com](mailto:devangbisht43@gmail.com)**
-
 ## Setup
 Click the button below to watch the setup guide:
 
