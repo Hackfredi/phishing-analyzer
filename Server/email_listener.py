@@ -3,7 +3,7 @@ import email
 from email.header import decode_header
 import re
 import sqlite3
-from imap_setup import connect_imap  # Add this line here
+from imap_setup import connect_imap
 
 # Database file
 DATABASE_FILE = "email_ids.db"
