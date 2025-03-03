@@ -3,13 +3,12 @@ import email
 from email.header import decode_header
 import re
 import sqlite3
-from imap_setup import connect_imap 
+from imap_setup import connect_imap  # Add this line here
 
 # Database file
 DATABASE_FILE = "email_ids.db"
 
 def connect_database():
-    """Connects to the SQLite database and creates tables if they don't exist."""
     try:
         print("Connecting to database...")
         conn = sqlite3.connect(DATABASE_FILE)
@@ -74,13 +73,14 @@ def extract_attachments(email_message, x_gm_msgid, conn):
         cursor = conn.cursor()
         for part in email_message.walk():
             if part.get_content_maintype() == "multipart":
-                continue 
+                continue  # Skip multipart containers
 
             filename = part.get_filename()
             if filename:
                 content_type = part.get_content_type()
                 raw_data = part.get_payload(decode=True)
 
+                
                 cursor.execute('''
                     SELECT id FROM email_attachments 
                     WHERE x_gm_msgid = ? AND filename = ?
@@ -88,6 +88,7 @@ def extract_attachments(email_message, x_gm_msgid, conn):
                 existing_attachment = cursor.fetchone()
 
                 if not existing_attachment:
+                    
                     cursor.execute('''
                         INSERT INTO email_attachments (x_gm_msgid, filename, content_type, raw_data)
                         VALUES (?, ?, ?, ?)
@@ -107,24 +108,20 @@ def extract_links(email_message, x_gm_msgid, conn):
         for part in email_message.walk():
             if part.get_content_type() in ["text/plain", "text/html"]:
                 body = part.get_payload(decode=True).decode(errors="ignore")
-                links.update(re.findall(r"https?://[^\s]+", body))  # Extract URLs
+                links.update(re.findall(r"https?://[^\s]+", body)) 
 
         for link in links:
-            cursor.execute('''
-                SELECT id FROM email_links 
-                WHERE x_gm_msgid = ? AND link = ?
-            ''', (x_gm_msgid, link))
-            existing_link = cursor.fetchone()
-
-            if not existing_link:
+            try:
                 cursor.execute('''
                     INSERT INTO email_links (x_gm_msgid, link)
                     VALUES (?, ?)
                 ''', (x_gm_msgid, link))
                 conn.commit()
-                print(f" Link stored ")
-            else:
+                print(f" Link stored:")
+            except sqlite3.IntegrityError:
+
                 print(f" Link already exists:")
+                continue
 
     except Exception as e:
         print(f" Failed to extract links: {e}")
