@@ -1,3 +1,4 @@
 *.env
 Server/email_ids.db
 /Server/emails
+numpy.docx
