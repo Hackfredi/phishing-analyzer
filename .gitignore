@@ -3,5 +3,6 @@ Server/email_ids.db
 /Server/emails
 numpy.docx
 Updated Rule List.docx
-data.py
+data_Phis.py
 phishing_urls.db
+valid_data.py
