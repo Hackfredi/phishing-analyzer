@@ -2,7 +2,14 @@
 Server/email_ids.db
 /Server/emails
 numpy.docx
-Updated Rule List.docx
+Docs/Updated Rule List.docx
 data_Phis.py
 phishing_urls.db
 valid_data.py
+Docs/Blueprint.docx
+Docs/SPF.docx
+Docs/Unusual Sender Addresses.docx
+Docs/Updated Sender Analysis Rules.docx
+Images/1.png
+Images/2.png
+IP rules.docx
