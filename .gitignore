@@ -10,6 +10,5 @@ Docs/Blueprint.docx
 Docs/SPF.docx
 Docs/Unusual Sender Addresses.docx
 Docs/Updated Sender Analysis Rules.docx
-Images/1.png
-Images/2.png
+Images/*.png
 IP rules.docx
