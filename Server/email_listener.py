@@ -31,16 +31,16 @@ def connect_database():
         conn = sqlite3.connect(DATABASE_FILE)
         cursor = conn.cursor()
 
-        # Tables with STRICT mode (SQLite 3.37+)
+        # Enable foreign key constraints
         cursor.execute('PRAGMA foreign_keys = ON')
 
         cursor.execute('''
             CREATE TABLE IF NOT EXISTS email_metadata (
-                x_gm_msgid TEXT PRIMARY KEY CHECK(validate_msgid(x_gm_msgid)),
+                x_gm_msgid TEXT PRIMARY KEY,
                 subject TEXT,
                 sender TEXT,
                 received_at TIMESTAMP
-            ) STRICT
+            )
         ''')
 
         cursor.execute('''
@@ -52,7 +52,7 @@ def connect_database():
                 raw_data BLOB,
                 processed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                 UNIQUE(x_gm_msgid, filename)
-            ) STRICT
+            )
         ''')
 
         cursor.execute('''
@@ -62,7 +62,7 @@ def connect_database():
                 link TEXT,
                 processed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                 UNIQUE(x_gm_msgid, link)
-            ) STRICT
+            )
         ''')
 
         conn.commit()
@@ -85,6 +85,78 @@ def handle_invalid_email(mail, email_id, reason):
         mail.delete_messages([email_id])
         logging.warning(f"Deleted email {email_id}")
 
+def extract_attachments(email_msg, msgid, conn):
+    """Extract and store email attachments with safety checks"""
+    cursor = conn.cursor()
+    for part in email_msg.walk():
+        if part.get_content_maintype() == 'multipart':
+            continue
+
+        filename = part.get_filename()
+        if not filename:
+            continue
+
+        try:
+            # Decode filename if encoded
+            filename_header = decode_header(filename)[0]
+            filename = filename_header[0]
+            if isinstance(filename, bytes):
+                filename = filename.decode(filename_header[1] or 'utf-8', errors='replace')
+
+            # Skip if attachment too large
+            payload = part.get_payload(decode=True)
+            if len(payload) > MAX_ATTACHMENT_SIZE:
+                logging.warning(f"Attachment too large ({len(payload)/1024/1024:.2f}MB): {filename}")
+                continue
+
+            # Store in database
+            cursor.execute('''
+                INSERT OR IGNORE INTO email_attachments
+                (x_gm_msgid, filename, content_type, raw_data)
+                VALUES (?, ?, ?, ?)
+            ''', (msgid, filename, part.get_content_type(), sqlite3.Binary(payload)))
+
+            logging.info(f"Stored attachment: {filename}")
+
+        except Exception as e:
+            logging.error(f"Failed to process attachment {filename}: {e}")
+            continue
+
+def extract_links(email_msg, msgid, conn):
+    """Extract all links from email body with duplicate prevention"""
+    cursor = conn.cursor()
+    links = set()
+
+    for part in email_msg.walk():
+        content_type = part.get_content_type()
+        if content_type not in ['text/plain', 'text/html']:
+            continue
+
+        try:
+            body = part.get_payload(decode=True)
+            if body:
+                body = body.decode('utf-8', errors='replace')
+                # Find all HTTP/HTTPS links
+                links.update(re.findall(
+                    r'https?://(?:[-\w.]|(?:%[\da-fA-F]{2}))+[/\w .\-?=&%#+]*',
+                    body
+                ))
+        except Exception as e:
+            logging.error(f"Failed to decode email part: {e}")
+            continue
+
+    # Store unique links
+    for link in links:
+        try:
+            cursor.execute('''
+                INSERT OR IGNORE INTO email_links
+                (x_gm_msgid, link)
+                VALUES (?, ?)
+            ''', (msgid, link))
+            logging.debug(f"Found link: {link[:50]}...")
+        except Exception as e:
+            logging.error(f"Failed to store link: {e}")
+
 def process_email(mail, email_id, conn):
     """Robust email processing with X-GM-MSGID validation"""
     try:
@@ -102,22 +174,27 @@ def process_email(mail, email_id, conn):
             handle_invalid_email(mail, email_id, f"Invalid X-GM-MSGID format: {msgid}")
             return False
 
-        # Proceed with processing
+        # Check for duplicates
+        cursor = conn.cursor()
+        cursor.execute('SELECT 1 FROM email_metadata WHERE x_gm_msgid = ?', (msgid,))
+        if cursor.fetchone():
+            logging.info(f"Skipping duplicate email: {msgid}")
+            return True
+
+        # Fetch full email if valid
         fetch_data = mail.fetch(email_id, ['RFC822'])
         email_msg = email.message_from_bytes(fetch_data[email_id][b'RFC822'])
 
         # Store metadata
-        cursor = conn.cursor()
+        subject = decode_header(email_msg['Subject'])[0][0]
+        if isinstance(subject, bytes):
+            subject = subject.decode('utf-8', errors='replace')
+
         cursor.execute('''
-            INSERT OR IGNORE INTO email_metadata 
+            INSERT INTO email_metadata
             (x_gm_msgid, subject, sender, received_at)
             VALUES (?, ?, ?, ?)
-        ''', (
-            msgid,
-            str(decode_header(email_msg['Subject'])[0][0]),
-            email_msg['From'],
-            email_msg['Date']
-        ))
+        ''', (msgid, subject, email_msg['From'], email_msg['Date']))
 
         # Process content
         extract_attachments(email_msg, msgid, conn)
@@ -131,7 +208,7 @@ def process_email(mail, email_id, conn):
         return False
 
 def main():
-    """Main workflow with cascading cleanup"""
+    """Main workflow with proper resource cleanup"""
     conn, mail = None, None
     try:
         conn = connect_database()
@@ -156,10 +233,16 @@ def main():
         logging.critical(f"Fatal error: {e}")
     finally:
         if mail:
-            mail.close()
-            mail.logout()
+            try:
+                mail.close()
+                mail.logout()
+            except Exception as e:
+                logging.error(f"Error closing IMAP connection: {e}")
         if conn:
-            conn.close()
+            try:
+                conn.close()
+            except Exception as e:
+                logging.error(f"Error closing database: {e}")
         logging.info("Processing completed")
 
 if __name__ == "__main__":
