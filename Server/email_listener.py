@@ -1,248 +1,137 @@
-import imaplib
-import email
-import re
-import sqlite3
 import logging
-from datetime import datetime, timedelta
-from email.header import decode_header
-from imap_setup import connect_imap
+from pathlib import Path
+from dotenv import load_dotenv
+import os
 
-# Configure logging
+# Load configuration from config.env
+config_path = Path(__file__).resolve().parent.parent / 'config' / 'config.env'
+load_dotenv(config_path)
+
+# Configure logging with IMAP username in log format
 logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(levelname)s - %(message)s',
-    filename='email_processor.log'
+    level=os.getenv('LOG_LEVEL', 'INFO').upper(),
+    format=f'%(asctime)s - %(levelname)s - {os.getenv("IMAP_USERNAME", "SYSTEM")} - %(message)s',
+    handlers=[
+        logging.FileHandler(
+            filename=os.getenv('LOG_FILE', 'msgid_processor.log'),
+            encoding='utf-8'
+        ),
+        logging.StreamHandler()
+    ]
 )
 
-# Constants
-DATABASE_FILE = "email_ids.db"
-MAX_ATTACHMENT_SIZE = 25 * 1024 * 1024  # 25MB
-DB_CLEANUP_DAYS = 30
-VALID_MSGID_PATTERN = re.compile(r'^\d+$')  # Gmail's X-GM-MSGID is numeric
+# Example enhanced logger setup
+logger = logging.getLogger('email_processor')
+logger.setLevel(os.getenv('LOG_LEVEL', 'INFO').upper())
 
-def validate_msgid(msgid: str) -> bool:
-    """Validate X-GM-MSGID format (Gmail uses numeric IDs)"""
-    return bool(VALID_MSGID_PATTERN.match(msgid))
+# Add error-specific logging if needed
+if os.getenv('ENABLE_ERROR_LOGS', 'false').lower() == 'true':
+    error_handler = logging.FileHandler('error.log')
+    error_handler.setLevel(logging.ERROR)
+    error_handler.setFormatter(logging.Formatter('%(asctime)s - %(levelname)s - %(module)s - %(message)s'))
+    logger.addHandler(error_handler)
+
+DATABASE_FILE = "email_ids.db"
 
 def connect_database():
-    """Ensure database tables enforce X-GM-MSGID integrity"""
-    conn = None
+    """Create database with proper constraints to prevent duplicates"""
     try:
         conn = sqlite3.connect(DATABASE_FILE)
-        cursor = conn.cursor()
-
-        # Enable foreign key constraints
-        cursor.execute('PRAGMA foreign_keys = ON')
-
-        cursor.execute('''
-            CREATE TABLE IF NOT EXISTS email_metadata (
-                x_gm_msgid TEXT PRIMARY KEY,
-                subject TEXT,
-                sender TEXT,
-                received_at TIMESTAMP
+        conn.execute("""
+            CREATE TABLE IF NOT EXISTS msgids (
+                x_gm_msgid TEXT PRIMARY KEY,  -- Primary key ensures uniqueness
+                processed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             )
-        ''')
-
-        cursor.execute('''
-            CREATE TABLE IF NOT EXISTS email_attachments (
-                id INTEGER PRIMARY KEY,
-                x_gm_msgid TEXT REFERENCES email_metadata(x_gm_msgid) ON DELETE CASCADE,
-                filename TEXT,
-                content_type TEXT,
-                raw_data BLOB,
-                processed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                UNIQUE(x_gm_msgid, filename)
-            )
-        ''')
-
-        cursor.execute('''
-            CREATE TABLE IF NOT EXISTS email_links (
-                id INTEGER PRIMARY KEY,
-                x_gm_msgid TEXT REFERENCES email_metadata(x_gm_msgid) ON DELETE CASCADE,
-                link TEXT,
-                processed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                UNIQUE(x_gm_msgid, link)
-            )
-        ''')
-
+            """)
         conn.commit()
         return conn
     except sqlite3.Error as e:
-        logging.error(f"Database setup failed: {e}")
-        if conn:
-            conn.close()
+        logging.error(f"Database error: {e}")
         raise
 
-def handle_invalid_email(mail, email_id, reason):
-    """Move invalid emails to 'Invalid' folder or delete"""
+def store_msgids(conn, msgids):
+    """Bulk insert msgids with duplicate handling"""
     try:
-        logging.warning(f"Invalid email {email_id}: {reason}")
-        mail.create_folder('INVALID')  # Ensure folder exists
-        mail.move([email_id], 'INVALID')
-        logging.info(f"Moved email {email_id} to INVALID folder")
-    except Exception as e:
-        logging.error(f"Failed to handle invalid email: {e}")
-        mail.delete_messages([email_id])
-        logging.warning(f"Deleted email {email_id}")
-
-def extract_attachments(email_msg, msgid, conn):
-    """Extract and store email attachments with safety checks"""
-    cursor = conn.cursor()
-    for part in email_msg.walk():
-        if part.get_content_maintype() == 'multipart':
-            continue
-
-        filename = part.get_filename()
-        if not filename:
-            continue
-
-        try:
-            # Decode filename if encoded
-            filename_header = decode_header(filename)[0]
-            filename = filename_header[0]
-            if isinstance(filename, bytes):
-                filename = filename.decode(filename_header[1] or 'utf-8', errors='replace')
-
-            # Skip if attachment too large
-            payload = part.get_payload(decode=True)
-            if len(payload) > MAX_ATTACHMENT_SIZE:
-                logging.warning(f"Attachment too large ({len(payload)/1024/1024:.2f}MB): {filename}")
-                continue
-
-            # Store in database
-            cursor.execute('''
-                INSERT OR IGNORE INTO email_attachments
-                (x_gm_msgid, filename, content_type, raw_data)
-                VALUES (?, ?, ?, ?)
-            ''', (msgid, filename, part.get_content_type(), sqlite3.Binary(payload)))
-
-            logging.info(f"Stored attachment: {filename}")
-
-        except Exception as e:
-            logging.error(f"Failed to process attachment {filename}: {e}")
-            continue
-
-def extract_links(email_msg, msgid, conn):
-    """Extract all links from email body with duplicate prevention"""
-    cursor = conn.cursor()
-    links = set()
-
-    for part in email_msg.walk():
-        content_type = part.get_content_type()
-        if content_type not in ['text/plain', 'text/html']:
-            continue
-
-        try:
-            body = part.get_payload(decode=True)
-            if body:
-                body = body.decode('utf-8', errors='replace')
-                # Find all HTTP/HTTPS links
-                links.update(re.findall(
-                    r'https?://(?:[-\w.]|(?:%[\da-fA-F]{2}))+[/\w .\-?=&%#+]*',
-                    body
-                ))
-        except Exception as e:
-            logging.error(f"Failed to decode email part: {e}")
-            continue
-
-    # Store unique links
-    for link in links:
-        try:
-            cursor.execute('''
-                INSERT OR IGNORE INTO email_links
-                (x_gm_msgid, link)
-                VALUES (?, ?)
-            ''', (msgid, link))
-            logging.debug(f"Found link: {link[:50]}...")
-        except Exception as e:
-            logging.error(f"Failed to store link: {e}")
-
-def process_email(mail, email_id, conn):
-    """Robust email processing with X-GM-MSGID validation"""
-    try:
-        # Fetch critical headers first
-        fetch_data = mail.fetch(email_id, ['X-GM-MSGID', 'RFC822.HEADER'])
-        msgid = fetch_data[email_id].get(b'X-GM-MSGID')
-
-        # Validate X-GM-MSGID
-        if not msgid:
-            handle_invalid_email(mail, email_id, "Missing X-GM-MSGID")
-            return False
-
-        msgid = msgid.decode()
-        if not validate_msgid(msgid):
-            handle_invalid_email(mail, email_id, f"Invalid X-GM-MSGID format: {msgid}")
-            return False
-
-        # Check for duplicates
         cursor = conn.cursor()
-        cursor.execute('SELECT 1 FROM email_metadata WHERE x_gm_msgid = ?', (msgid,))
-        if cursor.fetchone():
-            logging.info(f"Skipping duplicate email: {msgid}")
-            return True
-
-        # Fetch full email if valid
-        fetch_data = mail.fetch(email_id, ['RFC822'])
-        email_msg = email.message_from_bytes(fetch_data[email_id][b'RFC822'])
-
-        # Store metadata
-        subject = decode_header(email_msg['Subject'])[0][0]
-        if isinstance(subject, bytes):
-            subject = subject.decode('utf-8', errors='replace')
-
-        cursor.execute('''
-            INSERT INTO email_metadata
-            (x_gm_msgid, subject, sender, received_at)
-            VALUES (?, ?, ?, ?)
-        ''', (msgid, subject, email_msg['From'], email_msg['Date']))
-
-        # Process content
-        extract_attachments(email_msg, msgid, conn)
-        extract_links(email_msg, msgid, conn)
+        # Use INSERT OR IGNORE to silently skip duplicates
+        cursor.executemany(
+            "INSERT OR IGNORE INTO msgids (x_gm_msgid) VALUES (?)",
+            [(msgid,) for msgid in msgids]
+        )
         conn.commit()
+        new_count = cursor.rowcount
+        logging.info(f"Stored {new_count} new msgids (skipped {len(msgids) - new_count} duplicates)")
         return True
-
-    except Exception as e:
-        logging.error(f"Error processing email {email_id}: {e}")
+    except sqlite3.Error as e:
+        logging.error(f"Database insert error: {e}")
         conn.rollback()
         return False
 
+def get_existing_msgids(conn):
+    """Retrieve all existing msgids for duplicate checking"""
+    try:
+        cursor = conn.cursor()
+        cursor.execute("SELECT x_gm_msgid FROM msgids")
+        return {row[0] for row in cursor.fetchall()}
+    except sqlite3.Error as e:
+        logging.error(f"Database query error: {e}")
+        return set()
+
+def fetch_new_msgids(imap_client, existing_msgids):
+    """Fetch only new msgids from IMAP server"""
+    try:
+        imap_client.select_folder('INBOX')  # Changed from select to select_folder
+        email_ids = imap_client.search()  # Changed parameter handling
+        
+        new_msgids = []
+        
+        for email_id in email_ids:
+            try:
+                fetch_data = imap_client.fetch(email_id, ['X-GM-MSGID'])
+                msgid = fetch_data[email_id][b'X-GM-MSGID'].decode('utf-8').strip()
+                
+                if msgid and msgid.isdigit() and msgid not in existing_msgids:
+                    new_msgids.append(msgid)
+                    
+            except Exception as e:
+                logging.warning(f"Error processing email {email_id}: {e}")
+                continue
+                
+        return new_msgids
+    except Exception as e:
+        logging.error(f"IMAP error: {e}")
+        return []
+
 def main():
-    """Main workflow with proper resource cleanup"""
-    conn, mail = None, None
+    """Main execution with optimized duplicate handling"""
+    conn, imap_connector = None, None
     try:
         conn = connect_database()
-        mail = connect_imap()
+        imap_connector = IMAPConnector()  # Changed to use the class
         
-        if not mail or not conn:
-            raise RuntimeError("Initialization failed")
-
-        mail.select('INBOX')
-        _, messages = mail.search(None, 'ALL')
+        # Connect to IMAP server
+        success, message = imap_connector.connect()
+        if not success:
+            raise RuntimeError(f"IMAP connection failed: {message}")
         
-        for email_id in messages[0].split():
-            try:
-                process_email(mail, email_id, conn)
-            except Exception as e:
-                logging.error(f"Failed to process {email_id}: {e}")
-                continue
-
-    except KeyboardInterrupt:
-        logging.info("Process interrupted by user")
+        # Get existing msgids once at start
+        existing_msgids = get_existing_msgids(conn)
+        logging.info(f"Found {len(existing_msgids)} existing msgids in database")
+        
+        # Fetch only new msgids
+        new_msgids = fetch_new_msgids(imap_connector.client, existing_msgids)  # Access client attribute
+        logging.info(f"Found {len(new_msgids)} new msgids on server")
+        
+        if new_msgids:
+            store_msgids(conn, new_msgids)
+        
     except Exception as e:
-        logging.critical(f"Fatal error: {e}")
+        logging.error(f"Error: {e}")
     finally:
-        if mail:
-            try:
-                mail.close()
-                mail.logout()
-            except Exception as e:
-                logging.error(f"Error closing IMAP connection: {e}")
+        if imap_connector:
+            imap_connector._cleanup()  # Use the cleanup method
         if conn:
-            try:
-                conn.close()
-            except Exception as e:
-                logging.error(f"Error closing database: {e}")
+            conn.close()
         logging.info("Processing completed")
 
 if __name__ == "__main__":
