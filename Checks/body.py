@@ -1,11 +1,22 @@
+import os
+from dotenv import load_dotenv
 import re
 import requests
 import whois
 from datetime import datetime
 import tldextract
 from urllib.parse import urlparse
+from pathlib import Path
 
-VIRUSTOTAL_API_KEY = 'your-api-key'  # Replace with your actual API key
+# Load environment variables from the specified .env file
+env_path = Path('config') / 'config1.env'
+load_dotenv(dotenv_path=env_path)
+
+# Access VirusTotal API key from environment variable
+VIRUSTOTAL_API_KEY = os.getenv("VIRUSTOTAL_API_KEY")
+
+if not VIRUSTOTAL_API_KEY:
+    raise ValueError("VIRUSTOTAL_API_KEY not set in config1.env")
 
 def scan_email_body(body: str) -> int:
     """
