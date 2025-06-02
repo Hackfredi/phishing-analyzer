@@ -1,0 +1,14 @@
+2025-06-02 20:03:35,948 - INFO - Connected to imap.gmail.com:993
+2025-06-02 20:03:35,949 - INFO - Found 0 existing msgids in database
+2025-06-02 20:03:37,031 - WARNING - Error processing email 875: 'int' object has no attribute 'decode'
+2025-06-02 20:03:37,405 - WARNING - Error processing email 884: 'int' object has no attribute 'decode'
+2025-06-02 20:03:37,720 - WARNING - Error processing email 922: 'int' object has no attribute 'decode'
+2025-06-02 20:03:38,106 - WARNING - Error processing email 924: 'int' object has no attribute 'decode'
+2025-06-02 20:03:38,420 - WARNING - Error processing email 925: 'int' object has no attribute 'decode'
+2025-06-02 20:03:38,932 - WARNING - Error processing email 932: 'int' object has no attribute 'decode'
+2025-06-02 20:03:39,252 - WARNING - Error processing email 935: 'int' object has no attribute 'decode'
+2025-06-02 20:03:39,563 - WARNING - Error processing email 936: 'int' object has no attribute 'decode'
+2025-06-02 20:03:39,874 - WARNING - Error processing email 942: 'int' object has no attribute 'decode'
+2025-06-02 20:03:39,874 - INFO - Found 0 new msgids on server
+2025-06-02 20:03:39,874 - WARNING - Error during cleanup: 'IMAPClient' object has no attribute 'is_connected'
+2025-06-02 20:03:39,880 - INFO - Processing completed
