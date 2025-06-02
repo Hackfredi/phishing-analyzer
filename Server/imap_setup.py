@@ -1,102 +1,111 @@
 import imapclient
-import os
-from dotenv import load_dotenv
+import ssl
+import time
+import logging
+from typing import Optional, Tuple
 from pathlib import Path
-import sqlite3
+from dotenv import load_dotenv
+import os
 
-# Load environment variables
-dotenv_path = Path(__file__).resolve().parent.parent / "config" / "config.env"
-load_dotenv(dotenv_path)
+class IMAPConnector:
+    def __init__(self, config_path: str = None):
+        """
+        Initialize IMAP connector with optional config path
+        Args:
+            config_path: Path to .env config file (default looks in parent/config/config.env)
+        """
+        self.client: Optional[imapclient.IMAPClient] = None
+        self.logger = logging.getLogger('IMAPConnector')
+        self.config_path = config_path or str(Path(__file__).parent.parent / 'config' / 'config.env')
+        self._load_config()
 
-EMAIL = os.getenv("EMAIL")
-PASSWORD = os.getenv("PASSWORD")
+    def _load_config(self) -> bool:
+        """Load configuration from .env file"""
+        try:
+            load_dotenv(self.config_path)
+            self.host = os.getenv("IMAP_HOST", "imap.gmail.com")
+            self.port = int(os.getenv("IMAP_PORT", "993"))
+            self.username = os.getenv("IMAP_USERNAME")
+            self.password = os.getenv("IMAP_PASSWORD")
+            self.timeout = int(os.getenv("IMAP_TIMEOUT", "30"))
+            
+            if not all([self.username, self.password]):
+                self.logger.error("Missing required credentials in config")
+                return False
+            return True
+        except Exception as e:
+            self.logger.error(f"Config loading failed: {str(e)}")
+            return False
 
-# Database file
-DATABASE_FILE = "email_ids.db"
+    def connect(self, max_retries: int = 3, retry_delay: int = 5) -> Tuple[bool, str]:
+        """Establish IMAP connection using config values"""
+        if not self._load_config():
+            return False, "Config loading failed"
 
-def connect_imap():
-    """Connects to IMAP server and returns the connection object."""
-    try:
-        mail = imapclient.IMAPClient("imap.gmail.com", ssl=True)
-        mail.login(EMAIL, PASSWORD)
-        mail.select_folder("INBOX")
-        print(" IMAP Connection Successful! All steps completed.")
-        return mail
-    except Exception as e:
-        print(f" IMAP Connection Failed: {e}")
-        return None
-
-def fetch_x_gm_msgids(mail):
-    """Fetches X-GM-MSGID for all emails in the selected folder."""
-    try:
-        
-        email_ids = mail.search()
-        print(f" Found {len(email_ids)} emails.")
-
-        x_gm_msgids = mail.fetch(email_ids, ["X-GM-MSGID"])
-        print(" X-GM-MSGIDs fetched successfully.")
-        return x_gm_msgids
-    
-    except Exception as e:
-        print(f" Failed to fetch X-GM-MSGIDs: {e}")
-        return None
-
-def setup_database():
-    """Creates a SQLite database and table to store X-GM-MSGIDs."""
-    try:
-        print(" Setting up database...")
-        conn = sqlite3.connect(DATABASE_FILE)
-        cursor = conn.cursor()
-        cursor.execute('''
-            CREATE TABLE IF NOT EXISTS email_ids (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                x_gm_msgid TEXT UNIQUE
-            )
-        ''')
-        conn.commit()
-        print(" Database setup completed.")
-        return conn
-    except Exception as e:
-        print(f" Database setup failed: {e}")
-        return None
-
-def store_x_gm_msgids(conn, x_gm_msgids):
-    """Stores X-GM-MSGIDs in the database."""
-    try:
-        print(" Storing X-GM-MSGIDs in the database...")
-        cursor = conn.cursor()
-        for email_id, data in x_gm_msgids.items():
-            x_gm_msgid = str(data[b"X-GM-MSGID"])
+        for attempt in range(max_retries):
             try:
-                cursor.execute("INSERT INTO email_ids (x_gm_msgid) VALUES (?)", (x_gm_msgid,))
-            except sqlite3.IntegrityError:
-                pass
-        conn.commit()
-        print(f" Stored {len(x_gm_msgids)} X-GM-MSGIDs in the database.")
-    except Exception as e:
-        print(f" Failed to store X-GM-MSGIDs: {e}")
+                ssl_context = ssl.create_default_context()
+                ssl_context.check_hostname = True
+                ssl_context.verify_mode = ssl.CERT_REQUIRED
 
-def main():
-    """Main function to connect to IMAP, fetch X-GM-MSGIDs, and store them in the database."""
-    mail = connect_imap()
-    if not mail:
-        return
+                self.client = imapclient.IMAPClient(
+                    host=self.host,
+                    port=self.port,
+                    ssl_context=ssl_context,
+                    timeout=self.timeout
+                )
 
-    x_gm_msgids = fetch_x_gm_msgids(mail)
-    if not x_gm_msgids:
-        mail.logout()
-        return
+                self.client.login(self.username, self.password)
+                self.logger.info(f"Connected to {self.host}:{self.port}")
+                return True, "Connection successful"
 
-    conn = setup_database()
-    if not conn:
-        mail.logout()
-        return
+            except ssl.SSLError as e:
+                error_msg = f"SSL error (attempt {attempt+1}): {str(e)}"
+                if "certificate verify failed" in str(e):
+                    error_msg += "\nTip: Check system time/date or add certificate"
+            except imapclient.exceptions.LoginError:
+                error_msg = "Login failed - check credentials"
+                break  # No point retrying with bad credentials
+            except Exception as e:
+                error_msg = f"Connection error (attempt {attempt+1}): {str(e)}"
 
-    store_x_gm_msgids(conn, x_gm_msgids)
+            self._cleanup()
+            if attempt < max_retries - 1:
+                time.sleep(retry_delay)
 
-    conn.close()
-    mail.logout()
-    print(" All tasks completed successfully.")
+        self.logger.error(error_msg)
+        return False, error_msg
 
+    def _cleanup(self):
+        """Clean up connection resources"""
+        if self.client:
+            try:
+                if self.client.is_connected():
+                    self.client.logout()
+            except Exception as e:
+                self.logger.warning(f"Error during cleanup: {str(e)}")
+            finally:
+                self.client = None
+
+    def __enter__(self):
+        success, message = self.connect()
+        if not success:
+            raise ConnectionError(message)
+        return self
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        self._cleanup()
+
+# Example usage
 if __name__ == "__main__":
-    main()
+    logging.basicConfig(level=logging.INFO)
+    
+    # Using default config path (parent/config/config.env)
+    with IMAPConnector() as connector:
+        print("Connection successful!")
+        print("Server capabilities:", connector.client.capabilities())
+        
+        # Example: Count inbox messages
+        connector.client.select_folder('INBOX')
+        messages = connector.client.search()
+        print(f"Found {len(messages)} messages in INBOX")
