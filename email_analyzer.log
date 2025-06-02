@@ -1,0 +1,3 @@
+2025-06-02 19:10:38,518 - ERROR - IMAP connection failed: b'[AUTHENTICATIONFAILED] Invalid credentials (Failure)'
+2025-06-02 20:04:03,481 - ERROR - IMAP connection failed: b'[AUTHENTICATIONFAILED] Invalid credentials (Failure)'
+2025-06-02 22:01:49,264 - ERROR - IMAP connection failed: b'[AUTHENTICATIONFAILED] Invalid credentials (Failure)'
